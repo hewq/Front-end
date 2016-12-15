@@ -1,0 +1,65 @@
+body,html{
+    padding: 0;
+    margin: 0;
+}
+.track{
+    width: 800px;
+    padding: 0;
+    height: 86px;
+    margin: 30px auto;
+}
+.circle-common{
+    width: 86px;
+    height: 100%;
+    display: inline-block;
+}
+.arrow-common{
+    width: 71px;
+    height: 100%;
+    display: inline-block;
+}
+.orange{
+    background-image: url("../images/circle_orange.png");
+}
+.purple{
+    background-image: url("../images/circle_purple.png");
+}
+.tan{
+    background-image: url("../images/circle_tan.png");
+}
+.grey{
+    background-image: url("../images/circle_grey.png");
+}
+.red{
+    background-image: url("../images/circle_red.png");
+}
+.blue{
+    background-image: url("../images/circle_blue.png");
+}
+.arrow-start{
+    background: url("../images/two_arrow_down_red.png") repeat-x ;
+}
+.arrow-check{
+    background: url("../images/two_arrow_down_blue.png") repeat-x;
+    background-position-y: center;
+}
+.arrow-register{
+    background: url("../images/two_arrow_down_green.png") repeat-x;
+    background-position-y: center;
+}
+.arrow-deal{
+    background: url("../images/two_arrow_down_purple.png") repeat-x;
+    background-position-y: center;
+}
+.arrow-job{
+    background: url("../images/two_arrow_down_orange.png") repeat-x;
+    background-position-y: center;
+}
+.arrow-end{
+    background: url("../images/two_arrow_down_tan.png") repeat-x;
+    background-position-y: center;
+}
+.arrow-grey{
+    background: url("../images/two_arrow_down_grey.png") repeat-x;
+    background-position-y: center;
+}

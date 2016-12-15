@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>引擎优化</title>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <p></p>
+    <p></p>
+    <script>
+        var arr = [1,5,9,12,36,5];
+        var each = function(arr,fn){
+            for(var i = 0;i < arr.length; i++){
+                if( fn.call( arr[ i ], i , arr[ i ]) === false){
+                    break;
+                }
+            }
+        };
+
+        /*求和*/
+        var sum = 0;
+        each(arr,function( v ){
+            sum += v;
+        });
+        console.log( sum );
+
+        /*求最大值*/
+        var max = 0;
+        each(arr,function( v ){
+            if(max < v){
+                max = v;
+            }
+        });
+        console.log( max );
+
+        /*查找3*/
+        var find = -1;
+        each(arr,function( i,v ){
+            if( v === 5){
+                find = i;
+                return false;
+            }
+        });
+        console.log( find );
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+/*当前位置*/
+#location{ width: 1100px; height: 60px; border: 1px solid #ccc; margin: 0 auto; padding: 0; display: block;}
+/*中部*/
+#middle{ width: 1100px; height: auto; margin: 3px auto; padding: 0; display: block;}
+/*主体*/
+#middle article{margin: 0; padding: 0; width: 73%; height: auto; float: left; border: 1px solid #e1dfdf; display: inline-block;}
+/*结束时间选择*/
+#middle article section.item_time{margin: 0; padding: 20px 0 0 20px; height: 36px; width: 97.6%; border-bottom: 1px solid #e1dfdf; display: inline-block;}
+#middle article section.item_time span{ display: inline-block; height: 18px; margin: 0; padding: 0; color: #666666; font-size:12px; font-family:"宋体"; font-weight:bold; line-height:18px;}
+#middle article section.item_time a{ padding: 3px 0 0 5px; margin: 0 0 0 10px; height: 18px; font-size:12px; font-family:"宋体"; line-height:18px; text-decoration:none; color:#616161;}
+#middle article section.item_time a:hover{ text-decoration: underline;}
+/*项目进度选择*/
+#middle article section.list-cont{ display: inline-block; margin: 0; padding: 20px 0 0 20px; width: 95%; height: 38px;}
+#middle article section.list-cont ul.list-cont-ul{ margin: 0; padding: 0; width: 100%; display: inline-block; list-style: none; border-bottom: 2px solid #2186da; height: 38px;}
+#middle article section.list-cont ul.list-cont-ul li.list-cont-ul-li{ margin: 0; padding: 0 ; display: inline-block; width: 142px; height: 38px; text-align: center;}
+#middle article section.list-cont ul.list-cont-ul li.list-cont-ul-li a{ font-weight: bold; text-decoration: none; line-height: 38px;}
+/*背景颜色选择*/
+.bg-checked{background-color: #2186da;}
+.bg-unchecked{ background-color: #c2c9fb;}
+/*字体颜色选择*/
+.font-checked{color: #ffffff;}
+.font-unchecked{color: #2186da;}
+/*排序方式选择*/
+#middle article section.list-sort{ background-color: #f5f5f5; display: inline-block; margin: 2px 20px; width: 95%; height: 33px;}
+#middle article section.list-sort strong{ float: left; height: 22px; border-bottom: 2px solid #d3d2d2; margin: 0; padding: 10px 10px 0 10px; display: inline-block; width: auto; font-size: 12px; color: #6b6b6b;}
+#middle article section.list-sort ul.list-sort-ul{ margin: 0; padding: 0; display: inline-block;}
+#middle article section.list-sort ul.list-sort-ul li{ float: left; margin: 0; padding: 0; display: inline-block; text-align: center; width: 60px; height: 32px; border-left: 1px solid #d3d2d2; }
+#middle article section.list-sort ul.list-sort-ul li a{ text-decoration: none; font-size: 12px; line-height: 34px; color: #6b6b6b;}
+#middle article section.list-sort ul.list-sort-ul li a:hover{color: #2186da;}
+/*背景色选择*/
+.li-bg-checked{ background-color: #ffffff; }
+.li-bg-unchecked{ background-color: #f5f5f5; border-bottom: 2px solid #d3d2d2;}
+#middle article section.list-sort div.sort-end{ display: inline-block; font-size: 12px; line-height: 33px; height: 32px; width: 448px; margin: 0; padding: 0; float: right; border-bottom: 2px solid #d3d2d2; border-left: 1px solid #d3d2d2;}
+#middle article section.list-sort div.sort-end form div.money-range{ display: inline-block; margin: 0 0 0 15px; padding: 0;}
+#middle article section.list-sort div.sort-end form input.money{ display: inline-block; width: 50px; height: 15px;}
+#middle article section.list-sort div.sort-end form input.submit{display: inline-block; width: 42px; height: 22px; border: 1px solid #bdbdbd; background-color: #dddddd; border-radius: 3px; color: #525050;}
+#middle article section.list-sort div.sort-end form input.submit:hover{border: 1px solid #0065bf; background-color: #1685dd; color: #ffffff;}
+/*右侧栏*/
+#middle aside{margin: 0; padding: 0;width: 25%; height: auto; float: right; border: 1px solid red; display: inline-block;}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>stroke属性</title>
+</head>
+<body>
+    <!-- stroke属性定义一条线、文本或元素轮廓的颜色-->
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="300" height="300">
+        <g fill="none">
+            <path stroke="blue" d="M5 20 l215 0" />
+            <path stroke="red" d="M5 40 l215 0" />
+            <path stroke="black" d="M5 60 l215 0" />
+            <text stroke="green" x="10" y="100">i love svg</text>
+        </g>
+    </svg>
+
+    <!-- stroke-width属性定义一条线、文本或元素轮廓的厚度-->
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="300" height="300">
+        <g fill="none" stroke="black">
+            <path stroke-width="2" d="M5 20 l215 0" />
+            <path stroke-width="4" d="M5 40 l215 0" />
+            <path stroke-width="5" d="M5 60 l215 0" />
+            <text stroke-width="3" x="10" y="100">i love svg</text>
+        </g>
+    </svg>
+
+    <!-- stroke-linecap定义了不同类型开放路径的终结-->
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="300" height="300">
+        <g fill="none" stroke="black" stroke-width="8">
+            <path stroke-linecap="butt" d="M5 20 l215 0" />
+            <path stroke-linecap="round" d="M5 40 l215 0" />
+            <path stroke-linecap="square" d="M5 60 l215 0" />
+            <text stroke-linecap="round" x="10" y="100">i love svg</text>
+        </g>
+    </svg>
+
+    <!-- stroke-dasharray用于创建虚线-->
+    <!-- stroke-dasharray="每一段的长度，段段之间的距离"-->
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="300" height="300">
+        <g fill="none" stroke="black" stroke-width="3">
+            <path stroke-dasharray="5,5" d="M5 20 l215 0" />
+            <path stroke-dasharray="10,12" d="M5 40 l215 0" />
+            <path stroke-dasharray="10,2,25,6,8,6,9,1" d="M5 60 l215 0" />
+            <text stroke-dasharray="round" x="10" y="100">i love svg</text>
+        </g>
+    </svg>
+</body>
+</html>
