@@ -5,6 +5,15 @@
 .w-1490{
     width: 1490px;
 }
+.w-70{
+    width: 70px;
+}
+.w-140{
+    width: 140px;
+}
+.w-630{
+    width: 630px;
+}
 .ovf-hide{
     overflow: hidden;
 }
@@ -13,4 +22,10 @@
 }
 .m-t-210{
     margin-top: 210px;
+}
+.f-l{
+    float: left;
+}
+.f-r{
+    float: right;
 }

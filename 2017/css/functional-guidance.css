@@ -1,0 +1,54 @@
+.main-content-top{
+    height: 52px;
+    width: 840px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+.top-nav{
+    width: 100%;
+    height: 46px;
+    list-style: none;
+    font-size: 0;
+}
+.top-nav-li{
+    width: 163px;
+    height: 100%;
+    font-size: 16px;
+    display: inline-block;
+    text-align: center;
+    line-height: 46px;
+    color: #6f6f6f;
+    cursor: pointer;
+    background-color: #e4e4e4;
+    border-left: 1px solid #cccccc;
+}
+.top-nav-li span.active{
+    background-image: url("../images/top-li-bg.png");
+    color: #fff;
+}
+.top-nav-li span{
+    width: 100%;
+    height: 52px;
+}
+.main-tb{
+    width: 840px;
+    margin: 0 auto;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+.main-tb th{
+    height: 45px;
+    text-align: center;
+    color: #234160;
+    background-color: #ebebeb;
+}
+.main-tb td{
+    font-size: 16px;
+    height: 50px;
+    text-align: center;
+    color: #252525;
+    font-weight: 400;
+}
+.main-tb td:first-child+td{
+    text-align: left;
+}

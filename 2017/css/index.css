@@ -1,12 +1,3 @@
-
-.content,.content-in{
-    height: auto;
-}
-.content-in{
-    background-color: #fff;
-}
-
-
 .notice{
     width: 100%;
     height: 50px;
@@ -366,12 +357,4 @@ ul.ul-arrow{
 }
 .right-four-info{
     color: #7d7d7d;
-}
-.footer{
-    font-size: 16px;
-    color: #fff;
-    text-align: center;
-    height: 30px;
-    line-height: 30px;
-    margin-top: 40px;
 }
