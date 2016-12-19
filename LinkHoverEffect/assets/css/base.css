@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft YaHei UI";
+}
+section{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 160px 48px;
+    height: 391px;
+}
+nav{
+    width: 1259px;
+    height: 71px;
+    margin: 0 auto;
+    text-align: center;
+}
+a{
+    text-decoration: none;
+    display: inline-block;
+    width: auto;
+    height: 41px;
+    padding: 8px 0;
+    margin: 15px 25px;
+    color: #fff;
+    box-sizing: border-box;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 1.35em;
+    line-height: 1em;
+}
+a:hover{
+    outline: none;
+}
+
