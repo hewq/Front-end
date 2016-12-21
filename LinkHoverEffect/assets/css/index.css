@@ -279,5 +279,68 @@ body,html{
     opacity: 1;
     -webkit-transform: translateY(-50%) translateX(-50%) scale(1);
 }
+/*section-13*/
+.cl-effect-13 a{
+    position: relative;
+    -webkit-transition: color 0.3s;
+}
+.cl-effect-13 a::before{
+    content: ".";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    font-size: 1.2em;
+    color: transparent;
+    text-shadow: 0 0 transparent;
+    -webkit-transition:  color 0.3s, text-shadow 0.3s ;
+    -webkit-transform: translateX(-50%);
+}
+
+.cl-effect-13 a:hover::before{
+    color: #fff;
+    text-shadow: 10px 0 #fff, -10px 0 #fff;
+}
+.cl-effect-13 a:hover{
+    color: #ba7700;
+}
+/*section-14*/
+.cl-effect-14 a{
+    position: relative;
+    padding: 0 20px;
+    height: 45px;
+    line-height: 45px;
+}
+.cl-effect-14 a::before,.cl-effect-14 a::after{
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 45px;
+    background-color: #fff;
+    -webkit-transition:  all 0.3s;
+    opacity: 0.2;
+}
+
+.cl-effect-14 a::before{
+    top:0;
+    left: 0;
+    -webkit-transform: rotate(90deg);
+    -webkit-transform-origin: 0 0;
+}
+.cl-effect-14 a::after{
+    right:0;
+    bottom: 0;
+    -webkit-transform: rotate(90deg);
+    -webkit-transform-origin: 100% 0;
+}
+.cl-effect-14 a:hover::before{
+    opacity: 1;
+    left: 50%;
+    -webkit-transform: rotate(0deg) translateX(-50%);
+}
+.cl-effect-14 a:hover::after{
+    opacity: 1;
+    right: 50%;
+    -webkit-transform: rotate(0deg) translateX(50%);
+}
 
 
