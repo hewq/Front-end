@@ -251,5 +251,33 @@ body,html{
     opacity: 1;
     -webkit-transform: translateY(0px) translateX(0px);
 }
+/*section-12*/
+.cl-effect-12 a{
+    position: relative;
+    padding: 10px 20px;
+}
+.cl-effect-12 a::before,.cl-effect-12 a::after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    border: 2px solid rgba(0,0,0,0.1);
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.3s ;
+    -webkit-transform: translateY(-50%) translateX(-50%) scale(0.8);
+    box-sizing: border-box;
+    border-radius: 50%;
+    opacity: 0;
+}
+.cl-effect-12 a::after{
+    width: 90px;
+    height: 90px;
+    border-width: 6px;
+}
+.cl-effect-12 a:hover::before,.cl-effect-12 a:hover::after{
+    opacity: 1;
+    -webkit-transform: translateY(-50%) translateX(-50%) scale(1);
+}
 
 
