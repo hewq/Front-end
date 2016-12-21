@@ -89,7 +89,7 @@
 }
 .page-btn{
     padding: 0px 8px;
-    +padding: 0px 4px;
++padding: 0px 4px;
     margin: 0 1px;
     height:21px;
     /*min-width:38px;*/

@@ -22,7 +22,7 @@
 .left-nav-li:first-child + li + li + li + li + li{
     background: url("../images/lefttb6.png");
 }
-.left-nav-li:last-child{
+.left-nav-li:first-child + li + li + li + li + li + li{
     background: url("../images/lefttb7.png");
 }
 .left-nav-li span{

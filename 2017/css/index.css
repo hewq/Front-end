@@ -1,3 +1,10 @@
+
+.content,.content-in{
+    height: auto;
+}
+.content-in{
+    background-color: #fff;
+}
 .notice{
     width: 100%;
     height: 50px;
@@ -18,6 +25,7 @@
     font-size: 14px;
     height: 100%;
     line-height: 30px;
+    vertical-align:top;
 }
 .title-notice{
     color: #0468ff;
@@ -28,9 +36,26 @@
 
 .content-notice{
     color: #515151;
+    line-height:30px;
+    font-size:14px;
 }
 .date-notice{
     color: #0c0c0c;
+}
+.ul-notice
+{
+    display:inline-block;
+    position:absolute;
+    height:90px;
+    list-style:none;
+    top:0px;
+    left:90px;
+}
+.ul-notice li
+{
+    display:block;
+    height:30px;
+    width:500px;
 }
 .notice-in-right{
     width: 35%;
@@ -45,6 +70,7 @@
     background: url("../images/search.png") no-repeat #fff 4px 6px;
 }
 .search-ipt{
+    width:60%;
     height: 30px;
     border: none;
     outline: none;
@@ -93,23 +119,41 @@
     clear: both;
 }
 
-.left-one-left,.left-one-right{
-    width: 300px;
+.left-one-left{
+    width: 592px;
     height: 260px;
     display: inline-block;
 }
-.left-one-left{
-    +float: left;
-}
-.left-one-right{
-    float: right;
-}
+
 .news-span{
     font-size: 16px;
 }
-.ul-news li{
-    width: 298px;
-    height: 206px;
+.news
+{
+    width:1776px;
+    height:100%;
+    position:absolute;
+    list-style:none;
+    font-size:0;
+    top:0;
+    left:0;
+}
+.li-news{
+    width: 296px;
+    height: 100%;
+    display:inline-block;
+}
+.news a
+{
+    width:80%;
+}
+.more
+{
+    position:absolute;
+    right:0;
+    top:0px;
+    font-size:14px;
+    color:#333;
 }
 .left-two{
     height: 40px;
@@ -130,6 +174,7 @@
     font-size: 16px;
     line-height: 40px;
     margin-left: 15px;
+    vertical-align:top;
 }
 .left-three{
     height: 175px;
@@ -194,7 +239,7 @@
     display: inline-block;
 }
 .left-four-left{
-    +float: left;
++float: left;
 }
 .left-four-right{
     float: right;
@@ -218,9 +263,7 @@
 .list{
     height: 100%;
     width: 100%;
-    list-style-position: inside;
-    +list-style-position: outside;
-    +list-style: none;
+    list-style:none;
 }
 .list li{
     height: 35px;
@@ -231,7 +274,26 @@
 }
 .list span,.list a{
     color: #737373;
-    +float: left;
++float: left;
+}
+.list a
+{
+    width:230px;
+}
+.notice-in-left a
+{
+    width:350px;
+}
+.list a:before
+{
+    content:".";
+    width:10px;
+    height:30px;
+    display:inline-block;
++display:inline;
+    margin:0;
+    padding:0;
+    line-height:30px;
 }
 span.f-r{
     float: right;
@@ -256,7 +318,7 @@ span.f-r{
     left: 0px;
 }
 .banner-select{
-    width: 75px;
+    width: auto;
     height: 15px;
     position: absolute;
     right: 0;
@@ -291,8 +353,19 @@ span.active{
     margin-top: 30px;
 }
 ul.ul-arrow{
-    list-style-image: url("../images/li-arrow.png");
-    +list-style-image:none;
+    /*list-style-image: url("../images/li-arrow.png");*/
++list-style-image:none;
+    list-style:none;
+}
+ul.ul-arrow li a:before
+{
+    content:url("../images/li-arrow.png");
+    width:15px;
+    height:15px;
+    display:inline-block;
+    margin:0;
+    margin-top:5px;
+    padding:0;
 }
 .right-two-title{
     width: 100%;
@@ -357,4 +430,12 @@ ul.ul-arrow{
 }
 .right-four-info{
     color: #7d7d7d;
+}
+.footer{
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 40px;
 }

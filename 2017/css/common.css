@@ -17,6 +17,10 @@
 .w-630{
     width: 630px;
 }
+.w-400
+{
+    width:400px;
+}
 .ovf-hide{
     overflow: hidden;
 }
@@ -31,4 +35,10 @@
 }
 .f-r{
     float: right;
+}
+.txt-ovf-elips
+{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
 }
