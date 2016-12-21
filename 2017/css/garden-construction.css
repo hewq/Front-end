@@ -73,9 +73,9 @@ span.f-r{
     float: right;
 }
 ul.ul-arrow{
-    list-style-image: url("../images/li-arrow.png");
+    list-style: url("../images/li-arrow.png") inside;
++list-style-position:outside;
 +list-style-image:none;
-    list-style-position: inside;
 }
 .culture div{
     display: inline-block;
