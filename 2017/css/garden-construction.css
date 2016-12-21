@@ -1,0 +1,131 @@
+.main-in-left,.main-in-right{
+    display: inline-block;
+    width: 48%;
+    height: 90%;
+    margin-top: 30px ;
+    border: 3px solid #f3f3f3;
+    vertical-align: top;
+}
+.main-in-right{
+    margin-left: 15px;
+}
+.main-in-subtitle{
+    width: 180px;
+    height: 50px;
+    margin: -25px auto 0;
+    text-align: center;
+    line-height: 50px;
+    font-size: 24px;
+    color: #0167cc;
+    background-color: #fff;
+}
+.political{
+    width: 96%;
+    height: 300px;
+    margin: 15px auto;
+}
+.political-subtitle{
+    height: 40px;
+    width: 100%;
+    text-align: center;
+    line-height: 40px;
+    color: #101010;
+    background-color: #ebebeb;
+    position: relative;
+}
+.political-subtitle span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 40px;
+    width: 160px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #fc6902;
+    color: #ffffff;
+}
+.list{
+    height: 100%;
+    width: 100%;
+    list-style:none;
+    margin-top: 10px;
+}
+.list li{
+    height: 40px;
+    width: 100%;
+    line-height: 40px;
+    font-size: 14px;
+    color: #454545;
+}
+.list span,.list a{
+    color: #737373;
++float: left;
+}
+.list a
+{
+    width:260px;
+}
+.notice-in-left a
+{
+    width:350px;
+}
+span.f-r{
+    float: right;
+}
+ul.ul-arrow{
+    list-style-image: url("../images/li-arrow.png");
++list-style-image:none;
+    list-style-position: inside;
+}
+.culture div{
+    display: inline-block;
+}
+.culture{
+    width: 96%;
+    height: 300px;
+    margin: 20px auto;
+}
+.culture-left{
+    width: 45%;
+    height: 100%;
+    margin-left: 15px;
+}
+.culture-right{
+    width: 45%;
+    height: 100%;
+    margin-left: 15px;
+}
+.culture-subtitle{
+    color: #fc6902;
+    width: 100px;
+    border-bottom: 3px solid #fc6902;
+    height: 32px;
+}
+.culture-content{
+    width: 100%;
+    height: 264px ;
+    border-top: 1px solid #cccccc;
+}
+.culture-content-top,.culture-content-bottom{
+    width: 100%;
+    height: 75px;
+    margin-top: 30px;
+}
+.culture-content-left{
+    width: 50px;
+    height: 73px;
+}
+.culture-content-right{
+    width: 100px;
+    height: 73px;
+    margin-left: 30px;
+}
+.culture-content-right span,.culture-content-right a{
+    font-size: 14px;
+    height: 33%;
+    line-height: 1.2em;
+}
+.culture-content-right a{
+    color: #003399;
+    text-decoration: underline;
+}
