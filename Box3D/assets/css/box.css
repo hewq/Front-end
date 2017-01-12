@@ -1,0 +1,48 @@
+body{
+    margin: 0;
+    padding:0;
+    background-color: #f7f7f7;
+}
+.cube{
+    width: 400px;
+    height: 400px;
+    margin: 130px auto;
+    position: relative;
+    transform: rotateX(30deg) rotateY(45deg);
+    transform-style: preserve-3d;
+}
+.front,.back,.left,.right,.top,.bottom{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 400px;
+    font-size: 40px;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.front{
+    background-color: red;
+    transform: translateZ(200px);
+}
+.back{
+    background-color: orange;
+    transform: translateZ(-200px);
+}
+.left{
+    background-color: pink;
+    transform: rotateY(-90deg) translateZ(200px);
+}
+.right{
+    background-color: green;
+    transform: rotateY(90deg) translateZ(200px);
+}
+.top{
+    background-color: blue;
+    transform: rotateX(90deg) translateZ(200px);
+}
+.bottom{
+    background-color: yellow;
+    transform: rotateX(90deg) translateZ(-200px);
+}

@@ -4,7 +4,7 @@
 }
 body,html{
     width: 100%;
-    background-image: url("../images/backgroundimg.png");
+    background: url("../images/backgroundimg.png") no-repeat fixed;
 }
 .container,.section-one,.header,.content,.footer,.mini-title,.big-title,.two-content,.section-two,.section-three,.three-content,.three-footer{width: 100%;}
 .container{
