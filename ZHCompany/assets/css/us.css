@@ -1,0 +1,76 @@
+.content,.content-in{
+    height: 769px;
+    margin-bottom: 20px;
+    margin-top: 120px;
+}
+.content{
+    +height:880px;
+}
+.content-in{
+    width: 95%;
+    margin: 120px auto 0;
+}
+.content-left,.content-right{
+    width: 49%;
+    height: 769px;
+}
+.content-left{
+    float: left;
+    position: relative;
+    overflow: hidden;
+    background-color: #000;
+}
+.content-right{
+    float: right;
+}
+.content-right-top,.content-right-bottom{
+    width: 100%;
+    height: 365px;
+    position: relative;
+    overflow: hidden;
+    background-color: #000;
+}
+.content-right-top{
+    margin-bottom: 39px;
+}
+.description{
+    position: absolute;
+    width: 80%;
+    height: auto;
+    left: 50px;
+    font-size: 30px;
+    color: #fff;
+}
+.about-title{
+    bottom: 360px;
+}
+.advantage-title{
+    bottom: 120px;
+}
+.invite-title{
+    bottom: 310px;
+}
+.move{
+    margin-left: 0;
+    opacity: 1;
+    cursor: pointer;
+}
+.description-content{
+    position: absolute;
+    right: 20px;
+    font-size: 16px;
+    color: #fff;
+    left: 50px;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    line-height: 1.5em;
+}
+.about{
+    bottom: 90px;
+}
+.advantage{
+    bottom: 20px;
+}
+.invite{
+    bottom: 20px;
+}

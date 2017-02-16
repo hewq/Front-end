@@ -1,0 +1,10 @@
+.footer{
+    display: block;
+}
+.footer-in{
+    background-color: #f2f2f2;
+    height: 50px;
+    text-align: center;
+    color: #435a6b;
+    line-height: 50px;
+}
