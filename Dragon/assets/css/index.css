@@ -5,19 +5,22 @@
 body,html{
     width: 100%;
     background: url("../images/backgroundimg.png") no-repeat fixed;
+    overflow: hidden;
 }
 .container,.section-one,.header,.content,.footer,.mini-title,.big-title,.two-content,.section-two,.section-three,.three-content,.three-footer{width: 100%;}
 .container{
     height: auto;
 }
-.section-one,.section-two,.section-three,.section-four,section-five{
-    height: 650px;
+.section-one,.section-two,.section-three,.section-four,.section-five{
+    height: 665px;
     width: 100%;
 }
 
 /*section one*/
 .header{
     height: 150px;
+    border: 1px solid rgba(0,0,0,0);
+    box-sizing: border-box;
 }
 .header-in{
     width: 90%;
@@ -39,23 +42,27 @@ body,html{
     vertical-align: middle;
 }
 .navigation{
+    position: fixed;
+    right: 40px;
+    top: 160px;
     vertical-align: top;
     display: inline-block;
-    height: 40px;
+    height: 320px;
     padding: 20px;
-    float: right;
 }
 .navigation ul{
     height: 100%;
     list-style: none;
 }
 .navigation ul li{
-    height: 100%;
+    height: 20%;
     margin: 0 1px;
     width: 60px;
     text-align: center;
-    display: inline-block;
-
+}
+.navigation ul li img{
+    text-align: center;
+    margin-top: 10px;
 }
 .li-active{
     border: 1px dashed #f60;
@@ -408,7 +415,8 @@ body,html{
     }
 }
 .section-four{
-    height: 450px;
+    border: 1px solid rgba(0,0,0,0);
+    box-sizing: border-box;
 }
 .wrap{
     margin: 200px auto;
@@ -535,16 +543,20 @@ body,html{
 }
 
 /*section-five*/
+.section-five{
+    background: radial-gradient(ellipse at center,#430d6d 0%,#000000 100%);
+    border: 1px solid rgba(0,0,0,0);
+    box-sizing: border-box;
+}
 .section-five *{
     box-sizing: border-box;
-    background: radial-gradient(ellipse at center,#430d6d 0%,#000000 100%);
     position: relative;
     display: block;
 }
 .section-five-wrap{
-    width: 20em;
-    height: 20em;
-    margin: 10em auto;
+    width: 200px;
+    height: 200px;
+    margin: 200px auto;
     perspective: 1000px;
 }
 .section-five-cube{
@@ -566,7 +578,6 @@ body,html{
             rgba(54, 226, 248, 0.5) 0px,
             rgba(54, 226, 248, 0.5) 3px,
             rgba(0, 0, 0, 0) 0px);
-    /*background: linear-gradient(270deg,rgba(0,0,0,0) 0px,rgba(54,226,248,0.5) 3px,rgba(0,0,0,0) 0px),linear-gradient(90deg,rgba(0,0,0,0) 0px,rgba(54,226,248,0.5) 0%,rgba(54,226,248,0.5) 3px,rgba(0,0,0,0) 0px);*/
     background-size: 2.5em 2.5em,2.5em 2.5em;
     background-color: rgba(0,0,0,0.5);
     border:2px solid rgba(54,226,248,0.5);
