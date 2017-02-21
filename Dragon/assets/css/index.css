@@ -5,7 +5,6 @@
 body,html{
     width: 100%;
     background: url("../images/backgroundimg.png") no-repeat fixed;
-    overflow: hidden;
 }
 .container,.section-one,.header,.content,.footer,.mini-title,.big-title,.two-content,.section-two,.section-three,.three-content,.three-footer{width: 100%;}
 .container{
