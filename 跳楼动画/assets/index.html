@@ -41,6 +41,13 @@
             left: 420px;
             top: 470px;
         }
+        .you-jump {
+            position: absolute;
+            color: red;
+            font-size: 40px;
+            left: 200px;
+            top: 300px;
+        }
     </style>
 </head>
 <body>
@@ -48,6 +55,8 @@
 <div id="showJump" class="show-jump"></div>
 <div id="notDie" style="display: none">哈哈哈，傻了吧，我没死！</div>
 <div id="showNotDie" class="show-not-die"></div>
+<div id="youJump" style="display: none">接下来是要跳楼</div>
+<div id="showYouJump" class="you-jump"></div>
 <div class="bg" onclick="start()">
     <div id="goDie" class="go-die">
         <img src="images/timg.jpeg" alt="">
@@ -64,6 +73,18 @@
                 if($('#showJump').html() == $('#jump').html()){
                     clearInterval(timer);
                     jump();
+                }
+            },60);
+        }
+
+        function pre() {
+            timer = setInterval(function(){
+                $('#showYouJump').html($('#youJump').html().substring(0, i));
+                i++;
+                if($('#showYouJump').html() == $('#youJump').html()){
+                    clearInterval(timer);
+                    $('#showYouJump').fadeOut(1000);
+                    setTimeout(start,2000);
                 }
             },60);
         }
@@ -98,9 +119,12 @@
                 i++;
                 if($('#showNotDie').html() == $('#notDie').html()){
                     clearInterval(timer);
+                    setTimeout("$('img').attr('src','images/timg.gif')", 1000);
+                    setTimeout("$('#showNotDie').html('')", 1000);
                 }
             },100);
         }
+        setTimeout(pre,2000);
     </script>
 </body>
 </html>
