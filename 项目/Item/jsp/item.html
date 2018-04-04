@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>找项目</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/item.css">
+    <script src="../js/jquery.min.js"></script>
+</head>
+<body>
+<!--头部-->
+<header>
+    <img src="../images/logo.jpg" alt="logo">
+    <span class="span_left">|</span>
+    <strong><a href="#" class="title">任务需求</a></strong>
+    <a href="#" class="register" title="免费注册">注册</a>
+    <span class="span_right">&nbsp;|&nbsp;</span>
+    <a href="#" class="login" title="登录">登录</a>
+</header>
+<!--导航-->
+<nav>
+    <!--该div用于调整距离-->
+    <div class="nav_spacer"></div>
+    <ul class="navigate">
+        <li><a href="#" title="首页">首页</a></li>
+        <li>
+            <a href="#" title="服务内容">&nbsp;服务内容&nbsp;</a>
+            <ul class="service">
+                <li><a href="#">找项目</a></li>
+                <li><a href="#">找研发人员</a></li>
+                <li><a href="#">发布要求</a></li>
+                <li><a href="#">发布规则</a></li>
+                <li><a href="#">成功案例</a></li>
+                <li><a href="#">咨询服务</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" title="风险补偿大厅">风险补偿大厅</a>
+            <ul class="assess">
+                <li><a href="#">项目评估</a></li>
+                <li><a href="#">担保评估体系</a></li>
+                <li><a href="#">打分评测</a></li>
+                <li><a href="#">保险担保</a></li>
+                <li><a href="#">风险入投</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" title="研发成果转让">研发成果转让</a>
+            <ul class="transfer">
+                <li><a href="#">项目评价</a></li>
+                <li><a href="#">项目撮合</a></li>
+                <li><a href="#">人才培养</a></li>
+                <li><a href="#">天使孵化</a></li>
+                <li><a href="#">育成工厂</a></li>
+            </ul>
+        </li>
+        <li><a href="#" title="外包服务">外包服务</a></li>
+        <li><a href="#" title="直播">直播</a></li>
+        <li>
+            <a href="#" title="知识产权">知识产权</a>
+            <ul class="property" >
+                <li><a href="#">商标服务</a></li>
+                <li><a href="#">版权服务</a></li>
+                <li><a href="#">专利服务</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" title="检测服务">检测服务</a>
+            <ul class="test" >
+                <li><a href="#">热门配方</a></li>
+                <li><a href="#">热门问题</a></li>
+                <li><a href="#">解决方案</a></li>
+                <li><a href="#">检测报告</a></li>
+            </ul>
+        </li>
+        <li><a href="#" title="论坛">论坛</a></li>
+    </ul>
+</nav>
+<!--中部-->
+<div id="location"></div>
+<div id="middle">
+    <article>
+        <section class="item_time">
+            <span>结束时间：</span>
+            <a href="${pageContext.request.contextPath }/servlet/ListItemServlet?select=a">不限</a>
+            <a href="${pageContext.request.contextPath }/servlet/ListItemServlet?select=5">今日</a>
+            <a href="${pageContext.request.contextPath }/servlet/ListItemServlet?select=6">三日内</a>
+            <a href="${pageContext.request.contextPath }/servlet/ListItemServlet?select=7">本周内</a>
+            <a href="${pageContext.request.contextPath }/servlet/ListItemServlet?select=8">本月内</a>
+            <a href="${pageContext.request.contextPath }/servlet/ListItemServlet?select=9">本季度内</a>
+            <a href="${pageContext.request.contextPath }/servlet/ListItemServlet?select=10">本年内</a>
+        </section>
+        <section class="list-cont">
+            <ul class="list-cont-ul">
+                <li class="list-cont-ul-li bg-checked"><a class="font-checked" href="${pageContext.request.contextPath }/servlet/ListItemServlet?select=a">所有项目</a></li>
+                <li class="list-cont-ul-li bg-unchecked"><a class="font-unchecked" href="${pageContext.request.contextPath }/servlet/ListItemServlet?select=12">进行中</a></li>
+                <li class="list-cont-ul-li bg-unchecked"><a class="font-unchecked" href="${pageContext.request.contextPath }/servlet/ListItemServlet?select=13">圆满结束</a></li>
+            </ul>
+        </section>
+        <section class="list-sort">
+            <strong title="默认排序">排序方式</strong>
+            <ul class="list-sort-ul">
+                <li class="li-bg-checked"><a href="#fragment-1" title="按最新项目排序" onclick="zuixin()">最 新</a></li>
+                <li class="li-bg-unchecked"><a href="#fragment-2" title="按最热项目排序" onclick="zuire()">最 热</a></li>
+                <li class="li-bg-unchecked"><a href="#fragment-3" title="按快结束项目排序" onclick="kuaijiesu()">快结束</a></li>
+                <li class="li-bg-unchecked"><a href="#fragment-4" title="按金额由高到低排序" onclick="jine()">金 额</a></li>
+            </ul>
+            <div class="sort-end">
+                <form method="post" action="${pageContext.request.contextPath }/servlet/MoneyRangeServlet">
+                    <div class="money-range">
+                        ￥ <input type="text" name="start" class="money" />&nbsp;至&nbsp;
+                        <input type="text" name="end" class="money" />
+                        <input type="submit" class="submit" value="确定"/>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </article>
+    <aside></aside>
+</div>
+<!--底部-->
+<footer>
+    <ul class="ul_footer">
+        <li><a href="#">关于我们</a></li>
+        <li><a href="#">规则</a></li>
+        <li><a href="#">新手入门</a></li>
+    </ul>
+</footer>
+
+<script>
+    $(function(){
+        /*导航条下拉表显示与隐藏*/
+        $(".navigate li").hover(function(){
+            $(this).find("ul").show();
+        },function(){
+            $(this).find("ul").hide();
+        });
+        /*选项卡*/
+    });
+</script>
+</body>
+</html>

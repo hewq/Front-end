@@ -1,0 +1,54 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.nav{
+    height: 40px;
+    margin: 50px;
+    list-style: none;
+}
+li{
+    height: 100%;
+    width: 120px;
+    float: left;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 1s;
+    display: block;
+    transform-origin: 50% 50%;
+}
+span{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;;
+    height: 100%;
+    line-height: 40px;
+    display: block;
+    color: #fff;
+    text-align: center;
+    font-family: "Microsoft YaHei UI";
+}
+span:first-child{
+    background-color: blue;
+    transform: rotateX(90deg) translateZ(20px);
+}
+span:last-child{
+    background-color: red;
+    transform: translateZ(20px);
+}
+.nav:hover li{
+    transform: rotateX(-90deg);
+}
+li:nth-child(2){
+    transition-delay: 0.25s;
+}
+li:nth-child(3){
+    transition-delay: 0.5s;
+}
+li:nth-child(4){
+    transition-delay: 0.75s;
+}
+li:nth-child(5){
+    transition-delay: 1s;
+}

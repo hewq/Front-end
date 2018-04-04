@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>行走的人</title>
+    <style>
+        .wrap {
+            width: 414px;
+            height: 736px;
+            position: relative;
+        }
+        .wrap div {
+            position: absolute;
+        }
+        .head {
+            background: url("images/loadingtou.png");
+            width: 35px;
+            height: 54px;
+            top: 150px;
+            left: 200px;
+        }
+        .left-hand {
+            background: url("images/loadingzuoshou.png");
+            width: 28px;
+            height: 63px;
+            top: 22px;
+            left: 3px;
+        }
+        .left-shoulder {
+            background: url("images/loadingzuojian.png");
+            width: 60px;
+            height: 43px;
+            top: 0;
+            left: 0;
+        }
+        .left-all-hand {
+            width: 60px;
+            height: 106px;
+            top: 200px;
+            left: 152px;
+            transform-origin: right 10px ;
+            animation: leftShoulder 3.2s linear infinite;
+        }
+        .body-up {
+            background: url("images/loadingshangbanshen.png");
+            width: 38px;
+            height: 107px;
+            top: 198px;
+            left: 193px;
+        }
+        .right-all-hand {
+            width: 60px;
+            height: 106px;
+            top: 200px;
+            left: 152px;
+            transform-origin: right 10px ;
+            animation: rightShoulder 3.2s linear infinite;
+        }
+        .right-hand {
+            background: url("images/loadingyoushou.png");
+            width: 62px;
+            height: 34px;
+            top: 31px;
+            left: 73px;
+        }
+        .right-shoulder {
+            background: url("images/loadingyoujian.png");
+            width: 45px;
+            height: 58px;
+            top: 8px;
+            left: 50px;
+        }
+        .left-all-foot {
+            width: 60px;
+            height: 106px;
+            top: 282px;
+            left: 191px;
+            transform-origin: 15px 5px;
+            animation: leftAllFoot 3s linear infinite;
+        }
+        .left-leg {
+            background: url("images/loadingzuotui.png");
+            width: 32px;
+            height: 71px;
+            top: 0;
+            left: 0;
+        }
+        .left-foot {
+            background: url("images/loadingzuojiao.png");
+            width: 54px;
+            height: 63px;
+            top: 47px;
+            left: -24px;
+            transform-origin: 75% top;
+            animation: leftFoot 3s linear infinite;
+        }
+        .body-down {
+            background: url("images/loadingxiabanshen.png");
+            width: 47px;
+            height: 55px;
+            top: 272px;
+            left: 190px;
+        }
+        .right-all-foot {
+            width: 60px;
+            height: 106px;
+            top: 282px;
+            left: 191px;
+            transform-origin: 15px 5px;
+            animation: rightAllFoot 3s linear infinite;
+        }
+        .right-leg {
+            background: url("images/loadingyoutui.png");
+            width: 40px;
+            height: 68px;
+            top: 0;
+            left: 10px;
+        }
+        .right-foot {
+            background: url("images/loadingyoujiao.png");
+            width: 52px;
+            height: 61px;
+            top: 43px;
+            left: 18px;
+            transform-origin: 75% top;
+            animation: rightFoot 3s linear infinite;
+        }
+        @keyframes leftShoulder {
+            0% {
+                transform: rotate(-20deg);
+            }
+            55% {
+                transform: rotate(-95deg);
+            }
+            100% {
+                transform: rotate(-20deg);
+            }
+        }
+        @keyframes rightShoulder {
+            0% {
+                transform: rotate(0);
+            }
+            55% {
+                transform: rotate(70deg);
+            }
+            100% {
+                transform: rotate(0);
+            }
+        }
+        @keyframes leftAllFoot {
+            0% {
+                transform: rotate(0);
+            }
+            23% {
+                transform: rotate(17deg);
+            }
+            66% {
+                transform: rotate(-33deg);
+            }
+            100% {
+                transform: rotate(0);
+            }
+        }
+        @keyframes rightAllFoot {
+            0% {
+                transform: rotate(0);
+            }
+            13% {
+                transform: rotate(-20deg);
+            }
+            66% {
+                transform: rotate(43deg);
+            }
+            100% {
+                transform: rotate(0);
+            }
+        }
+        @keyframes leftFoot {
+            0% {
+                transform: rotate(0);
+            }
+            25% {
+                transform: rotate(-20deg) translate(-4px, -2px);
+            }
+            30% {
+                transform: rotate(0) translate(0px, 1px);
+            }
+            70% {
+                transform: rotate(-20deg) translate(-2px, -2px);
+            }
+            100% {
+                transform: rotate(0);
+            }
+        }
+        @keyframes rightFoot {
+            0% {
+                transform: rotate(5deg);
+            }
+            50% {
+                transform: rotate(30deg) translate(8px, 8px);
+            }
+            100% {
+                transform: rotate(5deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="head"></div>
+    <div class="left-all-hand">
+        <div class="left-hand"></div>
+        <div class="left-shoulder"></div>
+    </div>
+    <div class="body-up"></div>
+    <div class="right-all-hand">
+        <div class="right-hand"></div>
+        <div class="right-shoulder"></div>
+    </div>
+    <div class="left-all-foot">
+        <div class="left-leg"></div>
+        <div class="left-foot"></div>
+    </div>
+    <div class="body-down"></div>
+    <div class="right-all-foot">
+        <div class="right-leg"></div>
+        <div class="right-foot"></div>
+    </div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

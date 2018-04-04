@@ -1,0 +1,649 @@
+body,html{
+    width: 100%;
+}
+
+/*section-1*/
+.cl-effect-1 a::before{
+    content: "[";
+    display: inline-block;
+    opacity: 0;
+    margin-right: 10px;
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+    -webkit-transform: translateX(20px);
+    -moz-transform: translateX(20px);
+    transform: translateX(20px);
+    box-sizing: border-box;
+}
+.cl-effect-1 a::after{
+    display: inline-block;
+    content: "]";
+    opacity: 0;
+    margin-left: 10px;
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+    -webkit-transform: translateX(-20px);
+    -moz-transform: translateX(-20px);
+    transform: translateX(-20px);
+    box-sizing: border-box;
+}
+.cl-effect-1 a:hover::before,.cl-effect-1 a:hover::after{
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    transform: translateX(0px);
+}
+
+/*section-3*/
+.cl-effect-3 a{
+    position: relative;
+}
+.cl-effect-3 a::after{
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(0,0,0,0.1);
+    opacity: 0;
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+    -webkit-transform: translateY(10px);
+    box-sizing: border-box;
+}
+.cl-effect-3 a:hover::after{
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+}
+/*section-4*/
+.cl-effect-4 a{
+    position: relative;
+}
+.cl-effect-4 a::after{
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    opacity: 0;
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.2s,height 0.3s;
+    -webkit-transform: translateY(-10px);
+    box-sizing: border-box;
+}
+.cl-effect-4 a:hover::after{
+    opacity: 1;
+    height: 5px;
+    -webkit-transform: translateY(0px);
+}
+/*section-6*/
+.cl-effect-6 a{
+    position: relative;
+    margin: 0 10px;
+    padding: 10px 20px;
+}
+.cl-effect-6 a::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 2px;
+    background: #fff;
+    -webkit-transition:height 0.3s;
+    box-sizing: border-box;
+}
+.cl-effect-6 a::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    -webkit-transition: top 0.3s;
+    box-sizing: border-box;
+}
+.cl-effect-6 a:hover::before{
+    height: 100%;
+}
+.cl-effect-6 a:hover::after{
+    top: 100%;
+}
+/*section-7*/
+.cl-effect-7 a{
+    position: relative;
+    margin: 0 10px;
+    padding: 10px 10px;
+    color: #566473;
+}
+.cl-effect-7 a::before,.cl-effect-7 a::after{
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #566473;
+    -webkit-transition: -webkit-transform 0.3s , opacity 0.3s , top 0.3s;
+    -webkit-transform: scale(0.85);
+    box-sizing: border-box;
+}
+.cl-effect-7 a::after{
+    opacity: 0;
+}
+.cl-effect-7 a:hover::before{
+    -webkit-transform: scale(1);
+}
+.cl-effect-7 a:hover::after{
+    -webkit-transform: scale(1);
+    opacity: 1;
+    top: 0;
+}
+/*section-8*/
+.cl-effect-8 a{
+    position: relative;
+    padding: 10px 20px;
+}
+.cl-effect-8 a::before,.cl-effect-8 a::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 3px solid #354856;
+    -webkit-transition: -webkit-transform 0.3s , opacity 0.3s ;
+    -webkit-transform: scale(0.85);
+    box-sizing: border-box;
+}
+.cl-effect-8 a::after{
+    opacity: 0;
+}
+.cl-effect-8 a:hover::before{
+    -webkit-transform: scale(1);
+}
+.cl-effect-8 a:hover::after{
+    -webkit-transform: scale(1);
+    opacity: 1;
+}
+/*section-9*/
+.cl-effect-9 a{
+    position: relative;
+    padding: 18px 20px;
+    margin: 0 20px;
+}
+.cl-effect-9 a::before,.cl-effect-9 a::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #ffffff;
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.3s , height 0.3s;
+    box-sizing: border-box;
+}
+.cl-effect-9 a::after{
+    top: 100%;
+    -webkit-transform: translateY(-10px);
+    opacity: 0;
+}
+.cl-effect-9 a span:first-child{
+    z-index: 2;
+    display: block;
+    font-weight: 300;
+}
+.cl-effect-9 a span:last-child {
+    z-index: 1;
+    display: block;
+    padding: 8px 0 0 0;
+    color: rgba(0,0,0,0.4);
+    text-shadow: none;
+    text-transform: none;
+    font-style: italic;
+    font-size: 0.75em;
+    font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    opacity: 0;
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+    -moz-transition: -moz-transform 0.3s, opacity 0.3s;
+    transition: transform 0.3s, opacity 0.3s;
+    -webkit-transform: translateY(-100%);
+    -moz-transform: translateY(-100%);
+    transform: translateY(-100%);
+}
+.cl-effect-9 a:hover::before{
+    height: 6px;
+}
+.cl-effect-9 a:hover::after{
+    opacity: 1;
+    -webkit-transform: translateY(30px);
+}
+.cl-effect-9 a:hover span:last-child{
+    opacity: 1;
+    -webkit-transform: translateY(0%);
+}
+/*section-10*/
+.cl-effect-10 a{
+    position: relative;
+    padding: 10px 20px;
+}
+.cl-effect-10 a::before,.cl-effect-10 a::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 3px solid #354856;
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.3s ;
+    box-sizing: border-box;
+}
+.cl-effect-10 a::after{
+    -webkit-transform: translateY(-7px) translateX(6px);
+    border: 3px solid #fff;
+    opacity: 0;
+}
+.cl-effect-10 a:hover::before{
+    -webkit-transform: translateY(5px) translateX(-5px);
+    opacity: 0;
+}
+.cl-effect-10 a:hover::after{
+    opacity: 1;
+    -webkit-transform: translateY(0px) translateX(0px);
+}
+/*section-12*/
+.cl-effect-12 a{
+    position: relative;
+    padding: 10px 20px;
+}
+.cl-effect-12 a::before,.cl-effect-12 a::after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    border: 2px solid rgba(0,0,0,0.1);
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.3s ;
+    -webkit-transform: translateY(-50%) translateX(-50%) scale(0.8);
+    box-sizing: border-box;
+    border-radius: 50%;
+    opacity: 0;
+}
+.cl-effect-12 a::after{
+    width: 90px;
+    height: 90px;
+    border-width: 6px;
+}
+.cl-effect-12 a:hover::before,.cl-effect-12 a:hover::after{
+    opacity: 1;
+    -webkit-transform: translateY(-50%) translateX(-50%) scale(1);
+}
+/*section-13*/
+.cl-effect-13 a{
+    position: relative;
+    -webkit-transition: color 0.3s;
+}
+.cl-effect-13 a::before{
+    content: ".";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    font-size: 1.2em;
+    color: transparent;
+    text-shadow: 0 0 transparent;
+    -webkit-transition:  color 0.3s, text-shadow 0.3s ;
+    -webkit-transform: translateX(-50%);
+}
+
+.cl-effect-13 a:hover::before{
+    color: #fff;
+    text-shadow: 10px 0 #fff, -10px 0 #fff;
+}
+.cl-effect-13 a:hover{
+    color: #ba7700;
+}
+/*section-14*/
+.cl-effect-14 a{
+    position: relative;
+    padding: 0 20px;
+    height: 45px;
+    line-height: 45px;
+}
+.cl-effect-14 a::before,.cl-effect-14 a::after{
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 45px;
+    background-color: #fff;
+    -webkit-transition:  all 0.3s;
+    opacity: 0.2;
+}
+
+.cl-effect-14 a::before{
+    top:0;
+    left: 0;
+    -webkit-transform: rotate(90deg);
+    -webkit-transform-origin: 0 0;
+}
+.cl-effect-14 a::after{
+    right:0;
+    bottom: 0;
+    -webkit-transform: rotate(90deg);
+    -webkit-transform-origin: 100% 0;
+}
+.cl-effect-14 a:hover::before{
+    opacity: 1;
+    left: 50%;
+    -webkit-transform: rotate(0deg) translateX(-50%);
+}
+.cl-effect-14 a:hover::after{
+    opacity: 1;
+    right: 50%;
+    -webkit-transform: rotate(0deg) translateX(50%);
+}
+/*section-5*/
+.cl-effect-5 a{
+    overflow: hidden;
+    padding: 0 8px;
+    height: 1em;
+}
+.cl-effect-5 a span{
+    position:relative;
+    display: inline-block;
+    -webkit-transition: transform 0.3s;
+}
+.cl-effect-5 a span::before{
+    position: absolute;
+    top:100%;
+    content:attr(data-hover);
+    font-weight: 700;
+    -webkit-transform: translate3d(0,0,100px);
+}
+.cl-effect-5 a:hover span{
+    -webkit-transform: translateY(-100%);
+}
+/*section-2*/
+.cl-effect-2 a{
+    overflow: hidden;
+    margin: 0 15px;
+    display: inline-block;
+    position: relative;
+    font-size: 1.35em;
+    box-sizing: border-box;
+    padding: 0;
+}
+.cl-effect-2 a span{
+    display: block;
+    position: relative;
+    z-index: 1;
+    padding:10px 20px;
+    background:#0f7c67;
+    -webkit-transition:-webkit-transform 0.3s;
+    box-sizing: border-box;
+}
+.cl-effect-2 a::before{
+    position: absolute;
+    top:0;
+    left: 0;
+    padding: 10px 20px;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    color: #0f7c67;
+    content:attr(data-hover);
+    -webkit-transition: transform 0.3s;
+    -webkit-transform: translateX(-25%);
+    box-sizing: border-box;
+}
+.cl-effect-2 a:hover span{
+    -webkit-transform: translateX(100%);
+}
+.cl-effect-2 a:hover::before{
+    -webkit-transform: translateX(0%);
+}
+/*section-11*/
+.cl-effect-11 a{
+    color: #0972b4;
+    text-shadow: none;
+    border-top:2px solid #0972b4;
+    box-sizing: border-box;
+    padding: 10px 0;
+    position: relative;
+}
+.cl-effect-11 a::before{
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    padding: 10px 0;
+    max-width: 0;
+    border-bottom: 2px solid #fff;
+    color: #fff;
+    content:attr(data-hover);
+    box-sizing: border-box;
+    -webkit-transition:max-width 0.5s;
+}
+.cl-effect-11 a:hover::before{
+    max-width: 100%;
+}
+/*section-15*/
+.cl-effect-15 a{
+    color: rgba(0,0,0,0.2);
+    font-weight: 700;
+    position: relative;
+    text-shadow: none;
+}
+.cl-effect-15 a::before{
+    color: #fff;
+    content:attr(data-hover);
+    position: absolute;
+    -webkit-transition: transform 0.3s, opacity 0.3s;
+}
+.cl-effect-15 a:hover::before{
+    -webkit-transform: scale(0.9);
+    opacity: 0;
+}
+/*section-16*/
+.cl-effect-16 a{
+    color: #6f8686;
+    position: relative;
+    text-shadow: 0 0 1px rgba(111,134,134,0.3);
+}
+.cl-effect-16 a::before{
+    color: #fff;
+    content:attr(data-hover);
+    position: absolute;
+    opacity: 0;
+    text-shadow: 0 0 1px rgba(255,255,255,0.3);
+    -webkit-transform: scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
+    -webkit-transition: -webkit-transform 0.3s , opacity 0.3s;
+    pointer-events: none;
+}
+.cl-effect-16 a:hover::before{
+    -webkit-transform: scale(1) translateX(0) translateY(0) rotate(0);
+    opacity: 1;
+}
+/*section-17*/
+.cl-effect-17 a{
+    color: #10649b;
+    padding: 10px 0;
+    text-shadow: none;
+    box-sizing: border-box;
+    position: relative;
+}
+.cl-effect-17 a::before{
+    color:#fff;
+    text-shadow:0 0 1px rgba(255,255,255,0.3);
+    content:attr(data-hover);
+    position: absolute;
+    -webkit-transition: -webkit-transform 0.3s,opacity 0.3s;
+    pointer-events: none;
+    box-sizing: border-box;
+}
+.cl-effect-17 a::after{
+    content:"";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    opacity: 0;
+    -webkit-transform:translateY(5px);
+    -webkit-transition:-webkit-transform 0.3s,opacity 0.3s;
+    pointer-events:none;
+    box-sizing: border-box;
+}
+.cl-effect-17 a:hover::before{
+    opacity: 0;
+    -webkit-transform:translateY(-2px);
+}
+.cl-effect-17 a:hover::after{
+    opacity: 1;
+    -webkit-transform:translateY(0px);
+}
+/*section-18*/
+.cl-effect-18 a{
+    color: #b4770d;
+    padding: 0 5px;
+    font-weight: 700;
+    -webkit-transition: color 0.3s;
+    position: relative;
+    line-height: 41px;
+}
+.cl-effect-18 a::before,.cl-effect-18 a::after{
+    position: absolute;
+    width: 100%;
+    left:0;
+    top:50%;
+    height: 2px;
+    margin-top: -1px;
+    background: #b4770d;
+    content:'';
+    -webkit-transition: -webkit-transform 0.3s,opacity 0.3s;
+    pointer-events: none;
+}
+.cl-effect-18 a::before{
+    -webkit-transform: translateY(-20px);
+}
+.cl-effect-18 a::after{
+    -webkit-transform: translateY(20px);
+}
+.cl-effect-18 a:hover{
+    color: #fff;
+}
+.cl-effect-18 a:hover::before,.cl-effect-18 a:hover::after{
+    opacity:0.7;
+}
+.cl-effect-18 a:hover::before{
+    -webkit-transform: rotate(45deg);
+}
+.cl-effect-18 a:hover::after{
+    -webkit-transform: rotate(-45deg);
+}
+/*section-21*/
+.cl-effect-21 a{
+    color: #237546;
+    padding: 10px;
+    font-weight: 700;
+    -webkit-transition: color 0.3s;
+    position: relative;
+}
+.cl-effect-21 a::before,.cl-effect-21 a::after{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    content:'';
+    opacity: 0;
+    -webkit-transition: opacity 0.3s,-webkit-transform 0.3s;
+}
+.cl-effect-21 a::before{
+    top: 0;
+    -webkit-transform: translateY(-10px);
+}
+.cl-effect-21 a::after {
+    bottom: 0;
+    -webkit-transform: translateY(10px);
+}
+.cl-effect-21 a:hover {
+    color: #fff;
+}
+.cl-effect-21 a:hover::before,
+.cl-effect-21 a:hover::after{
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+}
+/*section-20*/
+.cl-effect-20 a{
+    line-height:2em;
+    /*perspective: 800px;*/
+    position: relative;
+    box-sizing: border-box;
+}
+.cl-effect-20 a span{
+    position: relative;
+    display: inline-block;
+    padding: 3px 15px 0;
+    background: #587285;
+    box-shadow: inset 0 3px #2f4351;
+    -webkit-transition: background 0.6s;
+    box-sizing: border-box;
+}
+.cl-effect-20 a span::before{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    color:#2f4351;
+    content:attr(data-hover);
+    transform: rotateX(270deg);
+    transition: transform 0.6s;
+    transform-origin: 0 0 ;
+    pointer-events: none;
+    box-sizing: border-box;
+}
+.cl-effect-20 a:hover span{
+    background: #2f4351;
+}
+.cl-effect-20 a:hover span::before{
+    transform: rotateX(10deg);
+}
+/*section-19*/
+.cl-effect-19 a{
+    width: 200px;
+    margin: 0 10px;
+    height: 40px;
+    line-height:2em;
+    position: relative;
+    box-sizing: border-box;
+    transform-style: preserve-3d;
+    display: inline-block;
+    transition: all 0.6s;
+}
+.cl-effect-19 a::before,.cl-effect-19 a::after{
+    content: attr(data-hover);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: #e35041;
+    color:#fff;
+    display: block;
+    box-sizing: border-box;
+}
+.cl-effect-19 a::after{
+    transform: rotateY(90deg) translateZ(100px);
+}
+.cl-effect-19 a::before{
+    transform: translateZ(100px);
+}
+.cl-effect-19 a:hover{
+    transform: rotateY(-90deg);
+}

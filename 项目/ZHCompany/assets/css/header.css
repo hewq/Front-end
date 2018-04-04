@@ -1,0 +1,35 @@
+
+.header{
+    height: 100px;
+}
+.header-in{
+    height: 100%;
+    background-color: #f2f2f2;
+}
+.logo{
+    height: 100%;
+    width: 40%;
+    float: left;
+}
+.nav{
+    height: 100%;
+    width: 300px;
+    float: right;
+}
+.nav ul{
+    list-style: none;
+    display: block;
+}
+.nav ul li{
+    float: left;
+}
+.nav ul a{
+    font-size: 18px;
+    width: 50px;
+    height: 100%;
+    display: inline-block;
+    line-height: 100px;
+    text-align: center;
+    text-decoration: none;
+    color: #435a6b;
+}

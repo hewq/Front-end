@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 36px;
+            color: #333;
+        }
+        .bg {
+            width: 500px;
+            height: 600px;
+            margin-left: -170px;
+            background: url("images/building1-half-t.png") no-repeat 0 80px;
+        }
+        .go-die {
+            width: 100px;
+            height: 100px;
+            left: 0px;
+            top: 0px;
+            background-color: #ff6600;
+            border-radius: 10px;
+            position: absolute;
+        }
+        .go-die img{
+            width: 100%;
+            height: 100%;
+        }
+
+        .show-jump {
+            position: absolute;
+            left: 130px;
+            top: 20px;
+        }
+
+        .show-not-die {
+            position: absolute;
+            left: 420px;
+            top: 470px;
+        }
+        .you-jump {
+            position: absolute;
+            color: red;
+            font-size: 40px;
+            left: 200px;
+            top: 300px;
+        }
+    </style>
+</head>
+<body>
+<div id="jump" style="display: none">I jump jiu ok!</div>
+<div id="showJump" class="show-jump"></div>
+<div id="notDie" style="display: none">哈哈哈，傻了吧，我没死！</div>
+<div id="showNotDie" class="show-not-die"></div>
+<div id="youJump" style="display: none">接下来是要跳楼</div>
+<div id="showYouJump" class="you-jump"></div>
+<div class="bg" onclick="start()">
+    <div id="goDie" class="go-die">
+        <img src="images/timg.jpeg" alt="">
+    </div>
+</div>
+    <script src="js/jquery-3.1.0.js"></script>
+    <script type="text/javascript">
+        var timer;
+        var i = 0;
+        function start() {
+            timer = setInterval(function(){
+                $('#showJump').html($('#jump').html().substring(0, i));
+                i++;
+                if($('#showJump').html() == $('#jump').html()){
+                    clearInterval(timer);
+                    jump();
+                }
+            },60);
+        }
+
+        function pre() {
+            timer = setInterval(function(){
+                $('#showYouJump').html($('#youJump').html().substring(0, i));
+                i++;
+                if($('#showYouJump').html() == $('#youJump').html()){
+                    clearInterval(timer);
+                    $('#showYouJump').fadeOut(1000);
+                    setTimeout(start,2000);
+                }
+            },60);
+        }
+
+        function jump(){
+            var x,y,k=1,t;
+            //x是水平方向移动路径；y是垂直方向的；k记录次数，可与0.1相乘得时间；t记录setInterval的返回id，用于clearInterval
+            t = setInterval(function(){
+                x = 30+0.1*k*4*100;
+                //S(x)=S(0)+t*V(x)，100是自定义的米到px转换数
+                y = 30+1/2*9.8*0.1*k*0.1*k*100;//S(y)=S(0)+1/2*g*t*t
+                var j = document.getElementById("goDie");
+                //通过修改小球的top和left，修改小球的位置
+                j.style.top = y + "px";
+                j.style.left = x + "px";
+                k++;//每次调用，k自增，简化计算
+                if(x>480||y>480){
+                    clearInterval(t);//小球达到边界时，清除setInterval
+                    $('#goDie').animate({
+                        height: "200px",
+                        width: "200px"
+                    },function () {
+                        i = 0;
+                        sayHaHa();
+                    });
+                }
+            },100);//每0.1s调用一次setInterval的function
+        }
+        function sayHaHa() {
+            timer = setInterval(function(){
+                $('#showNotDie').html($('#notDie').html().substring(0, i));
+                i++;
+                if($('#showNotDie').html() == $('#notDie').html()){
+                    clearInterval(timer);
+                    setTimeout("$('img').attr('src','images/timg.gif')", 1000);
+                    setTimeout("$('#showNotDie').html('')", 1000);
+                }
+            },100);
+        }
+        setTimeout(pre,2000);
+    </script>
+</body>
+</html>
