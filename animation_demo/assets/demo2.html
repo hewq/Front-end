@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Title</title>
+    <style>
+        .wrap {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <canvas id="myCanvas" width="414" height="736"></canvas>
+</div>
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var COM_IMG = 'images/atlas1.png',
+            LOADING_BODY_UP = 'images/loadingshangbanshen.png',
+            LOADING_BODY_DOWN = 'images/loadingxiabanshen.png',
+            LOADING_HEAD = 'images/loadingtou.png',
+            LOADING_RIGHT_SHOULDER = 'images/loadingyoujian.png',
+            LOADING_RIGHT_FOOT = 'images/loadingyoujiao.png',
+            LOADING_RIGHT_HAND = 'images/loadingyoushou.png',
+            LOADING_RIGHT_LEG = 'images/loadingyoutui.png',
+            LOADING_LEFT_SHOULDER = 'images/loadingzuojian.png',
+            LOADING_LEFT_FOOT = 'images/loadingzuojiao.png',
+            LOADING_LEFT_HAND = 'images/loadingzuoshou.png',
+            LOADING_LEFT_LEG = 'images/loadingzuotui.png';
+        var canvas = $('#myCanvas');
+        var ctx = canvas[0].getContext('2d');
+
+        // 设置画布宽高和手机屏幕相同
+        // canvas[0].width = $(window).width();
+        // canvas[0].height = $(window).height();
+
+        // 行走的人
+        var head = new Image(),
+            bodyUp = new Image(),
+            bodyDown = new Image(),
+            rightShoulder = new Image(),
+            rightHand = new Image(),
+            rightLeg = new Image(),
+            rightFoot = new Image(),
+            leftShoulder = new Image(),
+            leftHand = new Image(),
+            leftLeg = new Image(),
+            leftFoot = new Image();
+        head.src = LOADING_HEAD;
+        bodyUp.src = LOADING_BODY_UP;
+        bodyDown.src = LOADING_BODY_DOWN;
+        rightShoulder.src = LOADING_RIGHT_SHOULDER;
+        rightHand.src = LOADING_RIGHT_HAND;
+        rightLeg.src = LOADING_RIGHT_LEG;
+        rightFoot.src = LOADING_RIGHT_FOOT;
+        leftShoulder.src = LOADING_LEFT_SHOULDER;
+        leftHand.src = LOADING_LEFT_HAND;
+        leftLeg.src = LOADING_LEFT_LEG;
+        leftFoot.src = LOADING_LEFT_FOOT;
+        var human = {
+            head: {x: 50, y: 20},
+            leftHand: {x: 16, y: 95},
+            leftShoulder: {x: 12, y: 68},
+            bodyUp: {x: 45, y: 68},
+            rightHand: {x: 83, y: 102},
+            rightShoulder: {x: 60, y: 78},
+            leftLeg: {x: 45, y: 155},
+            bodyDown: {x: 42, y: 142},
+            rightLeg: {x: 55, y: 155},
+            leftFoot: {x: 20, y: 202},
+            rightFoot: {x: 64, y: 197},
+            draw: function (x, y) {
+                ctx.save();
+                ctx.drawImage(this, x, y);
+                ctx.restore();
+            }
+
+        };
+
+        function preImage(url, callback, wo) {
+            var img = new Image();
+            img.src = url;
+            if(img.complete){   //  如果图片已经存在于浏览器缓存，直接调用回掉函数
+                callback.call(img, wo.x, wo.y);
+                return;
+            }
+            img.onload = function () {  //  图片加载完毕时异步调用callback函数
+                callback.call(img, wo.x, wo.y);
+            };
+        }
+        function main() {
+            preImage(LOADING_HEAD, human.draw, human.head);
+            preImage(LOADING_LEFT_HAND, human.draw, human.leftHand);
+            preImage(LOADING_LEFT_SHOULDER, human.draw, human.leftShoulder);
+            preImage(LOADING_BODY_UP, human.draw, human.bodyUp);
+            preImage(LOADING_RIGHT_HAND, human.draw, human.rightHand);
+            preImage(LOADING_RIGHT_SHOULDER, human.draw, human.rightShoulder);
+            preImage(LOADING_LEFT_LEG, human.draw, human.leftLeg);
+            preImage(LOADING_BODY_DOWN, human.draw, human.bodyDown);
+            preImage(LOADING_RIGHT_LEG, human.draw, human.rightLeg);
+            preImage(LOADING_LEFT_FOOT, human.draw, human.leftFoot);
+            preImage(LOADING_RIGHT_FOOT, human.draw, human.rightFoot);
+        }
+        main();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+/* iphone X */
+@media (orientation: portrait) and (width: 375px ) and (max-device-width: 812px ){
+    .container {
+        -webkit-transform: translate(-25%,46.5%) rotate(90deg);
+        width: 108vh;
+        height: 108vw;
+        overflow: hidden;
+    }
+    .loading .moon {
+        top: -1.5rem;
+        left: 3.5rem;
+    }
+    .loading .tips {
+        top: 1rem;
+        left: -3rem;
+    }
+    .loading .percent {
+        top: 4rem;
+        left: 4.5rem;
+    }
+    .start {
+        top: 4rem;
+        left: 4rem;
+    }
+    .page1 {
+        top: 1.4rem;
+    }
+    .my-video {
+        height: 102vw;
+    }
+}
+/* iphone 7p/8p */
+@media (orientation: portrait) and (width: 414px ) and (height: 736px ){
+    .container {
+        -webkit-transform: translate(-25%,46.5%) rotate(90deg);
+        width: 100vh;
+        height: 100vw;
+        overflow: hidden;
+    }
+    .loading .moon {
+        top: 0rem;
+        left: 17rem;
+    }
+    .loading .tips {
+        top: 7rem;
+        left: 6rem;
+    }
+    .loading .percent {
+        top: 14rem;
+        left: 20rem;
+    }
+    .start {
+        top: 16rem;
+        left: 15rem;
+    }
+    .my-video {
+        width: 100vh;
+        height: 100vw;
+    }
+}
+
+
+
+
+@media (device-height:480px) and (-webkit-min-device-pixel-ratio:2){/* 兼容iphone4/4s */
+
+
+}
+
+
+@media (device-height:568px) and (-webkit-min-device-pixel-ratio:2){/* 兼容iphone5 */
+
+
+}
+
+@media(min-device-width:375px)and(max-device-width:667px)and(-webkit-min-device-pixel-ratio:2){
+
+
+    /*iphone6*/
+
+
+}
+
+
+@media(min-device-width:414px)and(max-device-width:736px)and(-webkit-min-device-pixel-ratio:3){
+
+
+    /*iphone6plus*/
+
+
+}
