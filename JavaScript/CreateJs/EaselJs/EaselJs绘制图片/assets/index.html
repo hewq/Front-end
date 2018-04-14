@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+	<title>绘制图片</title>
+	<script src="javascript/easeljs.min.js"></script>
+	<script src="javascript/jquery.min.js"></script>
+	<style>
+		html, body {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="imgBox"></div>
+<script>
+	window.onload = function () {
+		var canvas = document.createElement('canvas');
+		var w = window.innerWidth,
+			h = window.innerHeight;
+		canvas.width = w ;
+		canvas.height = h ;
+
+		var stage = new createjs.Stage( canvas );
+
+		var img = new Image();
+		img.src = './images/pageEnd1.png';
+
+		img.onload = function() {
+
+			var bg = new createjs.Bitmap( img );
+			var bg2 = new createjs.Bitmap( img );
+
+			// 画布显示区域
+			var rect = new createjs.Rectangle( 0, 0, w / 2, h );
+			//bg.sourceRect = rect;
+			bg.setTransform( 0, 0, 0.25, 0.25 );
+			bg2.setTransform( canvas.width / 2, 0, 0.25, 0.25 );
+
+
+			stage.addChild( bg );
+			stage.addChild( bg2 );
+			stage.update();
+
+			var hc_image = new Image();
+	        hc_image.src = canvas.toDataURL("image/png");
+	        $('#imgBox').html( hc_image );
+		} 
+	}
+</script>
+</body>
+</html>
