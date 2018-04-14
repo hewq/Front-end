@@ -9,6 +9,11 @@
 	<canvas id="canvas"></canvas>
 <script>
 	window.onload = function () {
+
+		/*
+			大致流程： 创建显示对象->设置参数->调用绘制方法->添加到舞台->刷新舞台
+		*/
+		
 		var canvas = document.querySelector('#canvas');
 
 		// 创建舞台
