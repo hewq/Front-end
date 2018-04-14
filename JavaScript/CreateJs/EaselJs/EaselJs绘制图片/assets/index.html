@@ -36,20 +36,41 @@
 			var bg = new createjs.Bitmap( img );
 			var bg2 = new createjs.Bitmap( img );
 
-			// 画布显示区域
-			var rect = new createjs.Rectangle( 0, 0, w / 2, h );
-			//bg.sourceRect = rect;
 			bg.setTransform( 0, 0, 0.25, 0.25 );
 			bg2.setTransform( canvas.width / 2, 0, 0.25, 0.25 );
+			
 
 
 			stage.addChild( bg );
 			stage.addChild( bg2 );
-			stage.update();
 
-			var hc_image = new Image();
-	        hc_image.src = canvas.toDataURL("image/png");
-	        $('#imgBox').html( hc_image );
+			var headPortrait = new Image();
+			headPortrait.src = './images/p42_00000.png';
+			headPortrait.onload = function() {
+				var bitmapHeadPortrait = new createjs.Bitmap( headPortrait );
+				bitmapHeadPortrait.x = canvas.width / 2 - 50;
+				bitmapHeadPortrait.y = 50;		
+				bitmapHeadPortrait.scaleX = 0.5;		
+				bitmapHeadPortrait.scaleY = 0.5;		
+
+				// 遮罩图形
+				var shape = new createjs.Shape();
+				shape.graphics.beginFill('#000').drawCircle(canvas.width / 2 - 30, 100,35);
+				shape.x = 20;
+				shape.y = 20;
+				bitmapHeadPortrait.mask = shape;
+
+				stage.addChild( shape );
+				stage.addChild( bitmapHeadPortrait );
+				stage.update();		
+
+
+				// canvas 转base64
+				var hc_image = new Image();
+		        hc_image.src = canvas.toDataURL("image/png");
+		        $('#imgBox').html( hc_image );
+			}
+
 		} 
 	}
 </script>
