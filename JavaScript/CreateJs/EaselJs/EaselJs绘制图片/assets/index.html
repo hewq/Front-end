@@ -12,7 +12,7 @@
 			padding: 0;
 			width: 100%;
 			height: 100%;
-			overflow: auto;
+			overflow: hidden;
 		}
 	</style>
 </head>
@@ -45,13 +45,15 @@
 			stage.addChild( bg2 );
 
 			var headPortrait = new Image();
-			headPortrait.src = './images/p42_00000.png';
+
+			headPortrait.crossOrigin = "Anonymous";
+			headPortrait.src = 'http://wx.qlogo.cn/mmopen/gwhELYibibFdSaCiaolQolV5r004ZPlNRmJVFwZTzqWl0pDticDZmoxjyEgHpBDuRiagBRU1Pkuib6bzLPwJLPxD7FwA/0';
 			headPortrait.onload = function() {
 				var bitmapHeadPortrait = new createjs.Bitmap( headPortrait );
 				bitmapHeadPortrait.x = canvas.width / 2 - 50;
 				bitmapHeadPortrait.y = 50;		
-				bitmapHeadPortrait.scaleX = 0.5;		
-				bitmapHeadPortrait.scaleY = 0.5;		
+				bitmapHeadPortrait.scaleX = 0.2;		
+				bitmapHeadPortrait.scaleY = 0.2;		
 
 				// 遮罩图形
 				var shape = new createjs.Shape();
