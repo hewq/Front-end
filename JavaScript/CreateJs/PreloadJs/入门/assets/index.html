@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>PreloadJs 入门</title>
+	<style>
+		body {
+			background-color: #000;
+		}
+	</style>
+	<script src="javascript/preloadjs.min.js"></script>
+</head>
+<body>
+	<script>
+		//LoadQueue是负载管理器，可以预载单个文件或文件的队列
+		var queue = new createjs.LoadQueue();
+
+		queue.on('complete', handleComplete, this);
+
+		// 加载单个文件
+		queue.loadFile({id: 'img', src: 'images/item01.png'});
+
+		// 使用loadManifest加载单个文件
+		// queue.loadManifest([
+		// 	{id: 'myImg', src: 'images/item02.png'}
+		// ]);
+
+		// 使用loadManifest加载文件列表
+		queue.loadManifest("manifest.json");
+		queue.loadManifest({src: "manifest.json", tyep: "manifest"});
+
+		function handleComplete(){
+			var image = queue.getResult('img');
+			var item = queue.getResult('item04');
+			console.log(item)
+			document.body.appendChild(image);
+		}
+	</script>
+</body>
+</html>
