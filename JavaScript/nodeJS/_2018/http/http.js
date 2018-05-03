@@ -10,6 +10,10 @@ server.on('request', function( request, response ){
 	response.write( 'hello' );
 	response.write( ' node.js' );
 	response.end();	
+
+	// 上面的方式比较麻烦，直接使用end()的同时发送数据
+	// 响应内容只能是二进制数据或者字符串
+	// response.end('hello node.js');
 })
 
 server.listen( 3000, function(){
