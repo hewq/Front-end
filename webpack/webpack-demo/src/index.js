@@ -1,15 +1,22 @@
-import _ from 'lodash';
+// import _ from 'lodash';
+import { cube } from './math.js';
 import './style.css';
 import Icon from './share-icon.png';
 import Data from './data.xml';
 import printMe from './print.js';
 
 function component() {
-	var element = document.createElement('div');
+	// var element = document.createElement('div');
+	var element = document.createElement('pre');
 	var btn = document.createElement('button');
 
-	element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+	// element.innerHTML = _.join(['Hello', 'webpack'], ' ');
 	element.classList.add('hello');
+
+	element.innerHTML = [
+		'Hello webpack!',
+		'5 cubed is equal to ' + cube(5)
+	].join('\n\n');
 
 	// 将图像添加到现有的div
 	var myIcon = new Image();
