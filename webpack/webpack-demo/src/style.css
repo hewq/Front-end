@@ -10,3 +10,6 @@
 	font-family: 'MyFont';
 	background: url('./share-icon.png');
 }
+body {
+	background: #fff;
+}
