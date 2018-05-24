@@ -1,0 +1,75 @@
+html,body{ margin: 0; padding: 0;}
+/*公共样式*/
+/*尺寸*/
+.h-50{ height: 50px;}
+.h-30{ height: 30px;}
+.h-20{ height: 20px;}
+.h-70{ height: 85px;}
+.h-350{ height: 450px;}
+.w-100p{ width: 100%;}
+.h-600{ height: 600px;}
+.w-150{ width: 150px;}
+.h-530{ height: 530px;}
+.h-40{ height: 40px;}
+.w-80p{ width: 80%;}
+.w-95p{ width: 95%;}
+.h-100p{ height: 100%;}
+/*布局*/
+.m-0{ margin: 0;}
+.m-30{ margin: 30px;}
+.m-l-10{ margin-left: 10px;}
+.m-t-10{ margin-top: 10px;}
+.m-l-30{ margin-left: 30px;}
+.m-t-18{ margin-top: 18px;}
+.m-t-25{ margin-top: 25px;}
+.m-t-5{ margin-top: 5px;}
+.m-t-0{ margin-top: 0;}
+.p-l-20{ padding-left: 20px;}
+.p-t-20{ padding-top: 20px;}
+.p-t-15{ padding-top: 15px;}
+.p-0{ padding: 0;}
+.p-10{ padding: 10px;}
+.f-l{ float: left;}
+.f-r{ float: right;}
+.t-a-c{ text-align: center;}
+.l-h-25{ line-height: 25px;}
+.o-a{ overflow: auto;}
+/*字体大小*/
+.f-s-28{ font-size: 28px;}
+.f-s-24{ font-size: 24px;}
+.f-s-16{ font-size: 16px;}
+.f-s-40{ font-size: 40px;}
+/*颜色*/
+.c-w{ color: #ffffff;}
+.c-li{ color: #4d5b69;}
+/*背景色*/
+.bg-main{ background-color: #22baa0;}
+.bg-left{ background-color: #4d5b69;}
+/*块级转换*/
+.dis-inbo{ display: inline-block;}
+.dis-in{ display: inline;}
+.dis-bo{ display: block;}
+.dis-no{ display: none;}
+/*边框*/
+.b-no{ border: none;}
+
+/*私有样式*/
+/* 设置滚动条的样式 */
+::-webkit-scrollbar {
+    width: 0;
+}
+/* 滚动槽 */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(255, 0, 0, 0.4);
+}

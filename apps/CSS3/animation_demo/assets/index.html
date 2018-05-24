@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>连环画</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0">
+    <style>
+        html,body {
+            margin: 0;
+            padding: 0;
+            width: 414px;
+            height: 736px;
+            overflow: hidden;
+        }
+        .container {
+            margin: 0;
+            padding: 0;
+            width: 414px;
+            height: 736px;
+            background: url("images/bg_03.jpg");
+            border: 1px solid #fff;
+            overflow: hidden;
+        }
+        @keyframes move {
+            from {margin: 300px 0 0 20px;}
+            to {margin: 100px 0 0 100px;}
+        }
+        .content {
+            width: 190px;
+            height: 280px;
+            margin: 300px 0 0 20px;
+            /*background: url("images/atlas_s6_.png") -477px 710px;*/
+            background: url("images/atlas_s6_.png") -516px 426px;
+            /*background: url("images/atlas_s6_.png") -328px 402px;*/
+            /*background: url("images/atlas_s6_.png") -140px 406px;*/
+            transform: skew(-15deg) scale(.5);
+            animation: move 5s linear forwards;
+        }
+        @keyframes leapMove {
+            0% {
+                opacity: 0;
+                top: 200px;
+                left: 10px;
+            }
+            30% {
+                opacity: 1;
+                top: 150px;
+                left: 80px;
+            }
+            100% {
+                top: 50px;
+                left: 250px;
+                opacity: 0;
+            }
+        }
+        @keyframes leap2Move {
+            0% {
+                opacity: 0;
+                top: 200px;
+                left: 10px;
+            }
+            30% {
+                opacity: 1;
+                top: 150px;
+                left: 80px;
+            }
+            100% {
+                top: 50px;
+                left: 250px;
+                opacity: 0;
+            }
+        }
+        .leap {
+            position: absolute;
+            width: 250px;
+            height: 536px;
+            top: 200px;
+            left: 10px;
+            background: url("images/loop_leaf02.png");
+            -webkit-background-size: cover;
+            background-size: cover;
+            animation: leapMove 3s linear infinite;
+            opacity: 1;
+        }
+        .leap2 {
+            background: url("images/loop_leaf01.png");
+            background-size: cover;
+            opacity: 0;
+            animation: leap2Move 5s linear infinite;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="content"></div>
+    <div class="leap"></div>
+    <div class="leap leap2"></div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript">
+    var bgArr = [];
+    var i = 0;
+    bgArr.push('url("images/atlas_s6_.png") -478px 710px');
+    bgArr.push('url("images/atlas_s6_.png") -140px 406px');
+    bgArr.push('url("images/atlas_s6_.png") -328px 402px');
+    bgArr.push('url("images/atlas_s6_.png") -516px 426px');
+
+    function rotate() {
+        if (i > 3){
+            i = 0;
+        }
+        $('.content').css('background', bgArr[i++]);
+    }
+    setInterval(rotate, 100);
+</script>
+</body>
+</html>

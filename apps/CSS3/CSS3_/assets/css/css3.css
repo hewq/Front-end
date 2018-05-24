@@ -1,0 +1,25 @@
+html,body{margin: 0; padding: 0; background-color: #000;}
+.audio{ width: 500px; height: 200px; margin: 100px; padding: 0; display: inline-block;}
+.audio_block{ transition: height 500ms ease 0s; width: 3px; height: 100%; display: inline-block; margin: 1px; background-color: lime; vertical-align: bottom; }
+.audio:active .audio_block:nth-child(odd){ transition: height 500ms ease 0s; height: 0; background: radial-gradient(palevioletred,plum,pink);}
+.audio:active .audio_block:nth-child(even){ transition: height 800ms ease 0s; height: 0; background: radial-gradient(blueviolet,rebeccapurple,blue); }
+.audio_block:last-child{height: 100% !important; background: transparent !important; animation: none !important;}
+.chrome{ width: 150px; height: 150px; margin: 0; padding: 0; display: inline-block; background-color: blue; border-radius: 50%; cursor: pointer; transition: transform 500ms ease 0s, background-color 500ms ease 0s,box-shadow 500ms ease 0s; }
+.chrome:active{ transition: transform 500ms ease 0s, background-color 500ms ease 0s,box-shadow 500ms ease 0s ; transform: scale(2); background-color: black; box-shadow: 0 0 10px #fff;}
+@keyframes audio {
+    0%{
+        height: 100%; background: radial-gradient(#004d00, #08ff28) ;
+    }
+    25%{
+        height: 30%; background: radial-gradient(#04284d, #7fffeb) ;
+    }
+    50%{
+        height: 50%; background: radial-gradient(#47074d, #ffb8e1) ;
+    }
+    75%{
+        height: 15%; background: radial-gradient(#4d080f, #ff9ca1) ;
+    }
+    100%{
+        height: 10%; background: radial-gradient(#4d4004, #ffebc7) ;
+    }
+}

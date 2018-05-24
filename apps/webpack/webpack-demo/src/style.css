@@ -1,0 +1,15 @@
+@font-face {
+	font-family: 'MyFont';
+	src: url('./serendity-script.woff2') format('woff2'),
+		 url('./serendity-script.woff') format("woff");
+	font-weight: 600;
+	font-style: normal;
+}
+.hello {
+	color: red;
+	font-family: 'MyFont';
+	background: url('./share-icon.png');
+}
+body {
+	background: #fff;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正四面体，正八面体，正二十面体</title>
+</head>
+<body onload="init()">
+<canvas id="mainCanvas" width="400" height="300"></canvas>
+<script src="../js/three.js"></script>
+<script type="text/javascript">
+    function init() {
+        // renderer
+        var renderer = new THREE.WebGLRenderer({
+            canvas: document.getElementById('mainCanvas')
+        });
+        renderer.setClearColor(0x000000);
+
+        // scene
+        var scene = new THREE.Scene();
+
+        // camera
+        var camera = new THREE.PerspectiveCamera(45, 400 / 300, 1, 10);
+        camera.position.set(3, 3, 3);
+        camera.lookAt(new THREE.Vector3(0, 0, 0));
+        scene.add(camera);
+
+        //  正四面体
+        // THREE.TetrahedronGeometry(radius, detail);
+        // 正八面体
+        // THREE.OctahedronGeometry(radius, detail);
+        // 正二十面体
+        // THREE.IcosahedronGeometry(radius, detail);
+
+        var tetrahedron = new THREE.Mesh(new THREE.TetrahedronGeometry(1),
+                        new THREE.MeshBasicMaterial({
+                            color: 0xf2d700,
+                            wireframe: true
+                        }));
+        scene.add(tetrahedron);
+        renderer.render(scene, camera);
+    }
+</script>
+</body>
+</html>

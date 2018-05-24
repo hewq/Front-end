@@ -1,0 +1,23 @@
+{
+  "name": "Front-end",
+  "version": "1.0.0",
+  "description": "前端开发的学习例子",
+  "main": "Three.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hewq/Front-end.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hewq/Front-end/issues"
+  },
+  "homepage": "https://github.com/hewq/Front-end#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}

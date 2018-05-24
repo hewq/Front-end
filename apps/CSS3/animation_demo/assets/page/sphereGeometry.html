@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>球体</title>
+</head>
+<body onload="init()">
+<canvas id="mainCanvas" width="400" height="300"></canvas>
+<script src="../js/three.js"></script>
+<script type="text/javascript">
+    function init() {
+        // renderer
+        var renderer = new THREE.WebGLRenderer({
+            canvas: document.getElementById('mainCanvas')
+        });
+
+        renderer.setClearColor(0x000000);
+
+        // scene
+        var scene = new THREE.Scene();
+
+        // camera
+        var camera = new THREE.PerspectiveCamera(45, 400 / 300, 1, 10);
+        camera.position.set(0, 4, 8);
+        camera.lookAt(new THREE.Vector3(0, 0, 0));
+        scene.add(camera);
+
+        // sphere
+        // THREE.SphereGeometry(radius, segmentsWidth, segmentsHeight, phiStart, phiLength, thetaStart, thetaLength
+        var sphere = new THREE.Mesh(new THREE.SphereGeometry(3, 18, 12, Math.PI / 2, Math.PI / 6, Math.PI / 2),
+                    new THREE.MeshBasicMaterial({
+                        color: 0xf2d700,
+                        wireframe: true
+                    }));
+        scene.add(sphere);
+        renderer.render(scene, camera);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Table</title>
+    <style>
+        html,body{margin: 0; padding: 0;}
+        div{margin: 20px;}
+        table{margin: 0; padding: 0; border-collapse: collapse; border-spacing: 0;}
+        td{width: 30px; height: 30px; border: 1px solid #999999; text-align: center; color: #666; font-family: "Adobe Devanagari"; font-size: 16px; vertical-align: middle;}
+        .td{background-color: cornflowerblue; color: #fff;}
+        input{height: 15px; width: 75px;}
+        button{margin-bottom: 10px; color: #fff; background-color: cadetblue; border: 1px dashed cadetblue; outline: none; width: 80px; height: 20px; border-radius: 5px; cursor: pointer;}
+    </style>
+</head>
+<body>
+    <div id="input">
+        <input id="tdNum" type="number" placeholder="请输入行" value="0">
+        <input id="trNum" type="number" placeholder="请输入列" value="0">
+        <button onclick="create()">生成表格</button><br/>
+        <button onclick="startMerryGoRound()">跑马灯</button>
+        <button onclick="createTr()">增加一行</button>
+        <button onclick="createTd()">增加一列</button>
+        <button onclick="removeTr()">删除一行</button>
+        <button onclick="removeTd()">删除一列</button>
+    </div>
+    <div id="table"></div>
+    <div id="table2"></div>
+<script type="text/javascript" src="../js/table.js"></script>
+</body>
+</html>

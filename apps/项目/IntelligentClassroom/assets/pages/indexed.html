@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>智能教室管理系统</title>
+    <link rel="shortcut icon" href="../images/title.png">
+    <link rel="stylesheet" href="../plugins/bootstrap-3.3.6-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../plugins/font-awesome-4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+<div class="container w-100p row m-0 p-0">
+    <!--左边-->
+    <div class="col-md-2 row">
+        <!--左上-->
+        <div class="w-100p h-50 bg-main">
+            <i class="glyphicon glyphicon-equalizer c-w m-l-30 m-t-5 f-s-28"></i>
+            <span class="f-s-28 c-w dis-inbo m-t-5">智能教室</span>
+        </div>
+        <!--左下-->
+        <div id="dd" class="bg-left h-600 w-100p">
+            <ul class="list-group dis-inbo m-t-18 w-100p">
+                <li class="list-group-item bg-left c-w b-no t-a-c w-100p l-h-25 p-0">
+                    <i class="fa fa-home f-s-40 dis-bo"></i>
+                    总览
+                </li>
+                <li id="room" class="list-group-item bg-left c-w b-no t-a-c w-100p l-h-25 p-0 p-t-20 m-t-18">
+                    <i class="fa fa-building-o f-s-40 dis-bo"></i>
+                    房间
+                    <ul id="building" class="list-group dis-no">
+                        <li class="list-group-item c-li w-150 dis-inbo"><a href="#">1号楼</a></li>
+                        <li class="list-group-item c-li w-150 dis-inbo"><a href="#">2号楼</a></li>
+                        <li class="list-group-item c-li w-150 dis-inbo"><a href="#">3号楼</a></li>
+                        <li class="list-group-item c-li w-150 dis-inbo"><a href="#">4号楼</a></li>
+                        <li class="list-group-item c-li w-150 dis-inbo"><a href="#">5号楼</a></li>
+                    </ul>
+                </li>
+                <li id="person" class="list-group-item bg-left c-w b-no t-a-c w-100p l-h-25 p-0 p-t-20 m-t-18">
+                    <i class="fa fa-user-plus f-s-40 dis-bo"></i>
+                    人员
+                    <ul id="personInfo" class="list-group dis-no">
+                        <li class="list-group-item c-li w-150 dis-inbo"><a href="#">上课记录</a></li>
+                        <li class="list-group-item c-li w-150 dis-inbo"><a href="#">人员查看</a></li>
+                        <li class="list-group-item c-li w-150 dis-inbo"><a href="#">人员添加</a></li>
+                    </ul>
+                </li>
+                <li class="list-group-item bg-left c-w b-no t-a-c w-100p l-h-25 p-0 p-t-20 m-t-18">
+                    <i class="fa fa-road f-s-40 dis-bo"></i>
+                    房间设置
+                </li>
+                <li class="list-group-item bg-left c-w b-no t-a-c w-100p l-h-25 p-0 p-t-20 m-t-18">
+                    <i class="fa fa-angle-double-down f-s-40 dis-bo"></i>
+                    大楼设置
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--右边-->
+    <div class="col-md-10 p-0">
+        <!--右上-->
+        <div class="h-50 w-100p">
+            <div class="col-md-1">
+                <span id="time" class="dis-bo w-100p m-l-10 h-30 f-s-24"></span>
+                <span id="date" class="dis-bo w-100p m-l-10 h-20 f-s-16"></span>
+            </div>
+            <div class="col-md-5">
+                <div class="input-group w-150 m-l-30 m-t-10">
+                    <input type="text" class="form-control" placeholder="房间号">
+                    <span class="input-group-btn">
+                        <button class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <a href="#" class=" dis-inbo f-r f-s-24 m-t-10 m-l-10">LOGIN</a>
+                <i class="glyphicon glyphicon-th-large f-r f-s-16 m-t-18"></i>
+            </div>
+        </div>
+        <!--右下-->
+        <div class="bg-warning h-600 w-100p panel panel-success">
+        </div>
+    </div>
+</div>
+
+<script src="../plugins/jquery.min.js"></script>
+<script src="../plugins/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
+<script>
+
+    $(function() {
+        function myInterval(){
+            var date = new Date();
+            var current_date = date.toLocaleDateString();
+            var hour = date.getHours();
+            var min = date.getMinutes();
+
+            if(min < 10 && hour < 10){
+                var time = "0" + hour + ":0" + min;
+            }
+            if(min < 10 && hour >= 10){
+                var time = hour + ":" + "0" + min;
+            }
+            if(min >= 10 && hour < 10){
+                var time = "0" + hour + ":" + min;
+            }
+            if(min >= 10 && hour >= 10){
+                var time = hour + ":" + min;
+            }
+            $("#date").html(current_date);
+            $("#time").html(time);
+        }
+        myInterval();
+        setInterval(myInterval,1000*60);
+
+        $("#room").hover(function(){
+            $("#building").slideDown();
+        },function(){
+            $("#building").slideUp();
+        });
+        $("#person").hover(function(){
+            $("#personInfo").slideDown();
+        },function(){
+            $("#personInfo").slideUp();
+        });
+    });
+</script>
+</body>
+</html>
