@@ -6,7 +6,7 @@ var student = require('./student');
 var router = express.Router();
 
 router.get('/', function (req, res) {
-	res.send('hello world');
+	res.send('hello https');
 });
 
 router.get('/students', function (req, res) {
