@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas 图像缩放案例</title>
+</head>
+<body style="background: black;">
+	<canvas id="canvas" style="display: block; margin: 0 auto; border: 1px solid #aaa;">
+		Your browser does not support the HTML 5 Canvas.
+	</canvas>
+	<input type="range" id="scaleRange" min="0.5" max="3.0" step="0.01" value="1.0" style="display: block; margin: 20px auto; width:  800px;">
+	<script>
+		var canvas = document.getElementById('canvas');
+		var context = canvas.getContext('2d');
+		var slider = document.getElementById('scaleRange');
+		var image = new Image();
+
+		window.onload = function () {
+			canvas.width = 1152 * 0.75;
+			canvas.height = 768 * 0.75;
+
+			var scale = slider.value;
+			image.src = "./images/img-lg.jpg";
+			image.onload = function () {
+				drawImageByScale(scale);
+
+				slider.onmousemove = function () {
+					scale = slider.value;
+					drawImageByScale(scale);
+				}
+			}
+		}
+
+		function drawImageByScale(scale) {
+			var imageWidth = 1152 * 0.75 * scale;
+			var imageHeight = 768 * 0.75 * scale;
+
+			x = canvas.width / 2 - imageWidth / 2;
+			y = canvas.height /2 - imageHeight / 2;
+
+			// 即时模式，清空画布
+			context.clearRect(0, 0, canvas.width, canvas.height);
+
+			context.drawImage(image, x, y, imageWidth, imageHeight);
+		}
+	</script>
+</body>
+</html>
