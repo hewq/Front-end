@@ -74,7 +74,7 @@ app.drag = function ($dom, _top, _right, _bottom, _left) {
  * @param {number} _maxWidth 可放大的最大宽度
  * @param {number} _scale 手指每缩放 1px 实际元素的缩放大小
 */
-app.scale = function ($dom, _minWidth, _maxWidth, _scale) {
+app.scale = function ($dom, ,_scale, _minWidth, _maxWidth) {
 	var x1Start,
 		x2Start,
 		y1Start,
