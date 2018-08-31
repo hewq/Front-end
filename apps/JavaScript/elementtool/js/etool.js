@@ -48,10 +48,10 @@ app.drag = function ($dom, _top, _right, _bottom, _left) {
 		endTop = top + distanceY;
 		endLeft = left + distanceX;
 
-		endTop < _top ? endTop = _top : endTop;
-		endTop > _bottom - height ? endTop = _bottom - height : endTop;
-		endLeft < _left ? endLeft = _left : endLeft;
-		endLeft > _right - width ? endLeft = _right - width : endLeft;
+		_top !== undefined && (endTop < _top ? endTop = _top : endTop);
+		_bottom !== undefined && (endTop > _bottom - height ? endTop = _bottom - height : endTop);
+		_left !== undefined && (endLeft < _left ? endLeft = _left : endLeft);
+		_right !== undefined && (endLeft > _right - width ? endLeft = _right - width : endLeft);
 
 		// 移动
         $dom.css('top', endTop + 'px');
