@@ -27,11 +27,19 @@ app.drag = function ($dom, _top, _right, _bottom, _left) {
 	height = parseInt($dom.css('height').slice(0, -2));
 
 	$dom.on('touchstart', function (e) {
+		if (e.originalEvent.targetTouches.length !== 1) {
+			return false;
+		}
+
     	startX = e.originalEvent.targetTouches[0].clientX;
 		startY = e.originalEvent.targetTouches[0].clientY;
 	});
 
 	$dom.on('touchmove', function (e) {
+		if (e.originalEvent.targetTouches.length !== 1) {
+			return false;
+		}
+
     	endX = e.originalEvent.targetTouches[0].clientX;
 		endY = e.originalEvent.targetTouches[0].clientY;
 
@@ -58,7 +66,6 @@ app.drag = function ($dom, _top, _right, _bottom, _left) {
         $dom.css('left', endLeft + 'px');
 	});
 };
-app.drag($('.drag'), 0, 150, 150, 0);
 
 /* 缩放
  * @method drag
@@ -86,20 +93,41 @@ app.scale = function ($dom, _minWidth, _maxWidth, _scale) {
 		heightStart,   // 缩放前的宽高
 		widthEnd,
 		heightEnd,  // 缩放后的宽高
+		centerX,
+		centerY,  // 中心点 
+		width,
+		height,
+		top,
+		left,   // 原始位置
+		defaultScale = 1,
 		scale;   // 缩放比例
 
+	width = parseInt($dom.css('width').slice(0, -2));
+	height = parseInt($dom.css('height').slice(0, -2));
+	top = parseInt($dom.css('top').slice(0, -2));
+	left = parseInt($dom.css('left').slice(0, -2));
+
+	centerX = left + width / 2;
+	centerY = top + height / 2;
+
 	$dom.on('touchstart', function (e) {
+		if (e.originalEvent.targetTouches.length !== 2) {
+			return false;
+		}
+
     	x1Start = e.originalEvent.targetTouches[0].clientX;
 		y1Start = e.originalEvent.targetTouches[0].clientY;
 
 		if (e.originalEvent.targetTouches.length === 2) {
-			console.log(111);
     		x2Start = e.originalEvent.targetTouches[1].clientX;
         	y2Start = e.originalEvent.targetTouches[1].clientY;
     	}
 	});
 
 	$dom.on('touchmove', function (e) {
+		if (e.originalEvent.targetTouches.length !== 2) {
+			return false;
+		}
     	x1End = e.originalEvent.targetTouches[0].clientX;
 		y1End = e.originalEvent.targetTouches[0].clientY;
 
@@ -128,10 +156,12 @@ app.scale = function ($dom, _minWidth, _maxWidth, _scale) {
 		// 缩小：xDistanceBeforeMove > xDistanceAfterMove || yDistanceBeforeMove > yDistanceAfterMove
 		// 放大：xDistanceBeforeMove < xDistanceAfterMove || yDistanceBeforeMove < yDistanceAfterMove
 		if (xDistanceBeforeMove > xDistanceAfterMove || yDistanceBeforeMove > yDistanceAfterMove) { // 缩小
-			widthEnd = widthStart - (thirdBeforeMove - thirdAfterMove) * _scale;
+			widthEnd = widthStart - (thirdBeforeMove - thirdAfterMove) * (_scale ? _scale : defaultScale);
+			_minWidth !== undefined && (widthEnd < _minWidth ? widthEnd = _minWidth : widthEnd);
 			scale = widthEnd / widthStart;
 		} else if (xDistanceBeforeMove < xDistanceAfterMove || yDistanceBeforeMove < yDistanceAfterMove) { // 放大
-			widthEnd = widthStart + (thirdAfterMove - thirdBeforeMove) * _scale;
+			widthEnd = widthStart + (thirdAfterMove - thirdBeforeMove) * (_scale ? _scale : defaultScale);
+			_maxWidth !== undefined && (widthEnd > _maxWidth ? widthEnd = _maxWidth : widthEnd);
 			scale = widthEnd / widthStart;
 		}
 
@@ -139,9 +169,12 @@ app.scale = function ($dom, _minWidth, _maxWidth, _scale) {
 		
 		$dom.css({
             'width': widthEnd + 'px',
-            'height': heightEnd + 'px'
+            'height': heightEnd + 'px',
+            'top': centerY - heightEnd / 2 + 'px',
+            'left': centerX - widthEnd / 2 + 'px'
         });
 	});
 };
 
-app.scale($('.scale'), 0, 0, 1);
+window.etool = app;
+
