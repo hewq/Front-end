@@ -69,7 +69,7 @@ app.drag = function ($dom, _top, _right, _bottom, _left) {
 
 /* 缩放
  * @method drag
- * @param {object} $dom 需要移动的 dom 节点
+ * @param {object} $dom 需要缩放的 dom 节点
  * @param {number} _minWidth 可缩小的最小宽度
  * @param {number} _maxWidth 可放大的最大宽度
  * @param {number} _scale 手指每缩放 1px 实际元素的缩放大小
