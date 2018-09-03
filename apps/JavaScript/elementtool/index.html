@@ -22,7 +22,26 @@
 <script src="//ossweb-img.qq.com/images/js/jquery/jquery-1.11.3.min.js"></script>
 <script src="js/etool.js"></script>
 <script>
-etool.drag($('.drag'), 0, 150, 150, 0);
+etool.drag({
+	$dom: $('.drag'),
+	top: 0,
+	right: 150,
+	bottom: 150,
+	left: 0,
+	callback: function () {
+		console.log(110);
+	}
+});
+
+etool.scale({
+	$dom: $('.scale'),
+	minWidth: 100,
+	maxWidth: 500,
+	scale: 1,
+	callback: function () {
+		console.log(120);
+	}
+});
 </script>
 </body>
 </html>

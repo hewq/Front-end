@@ -3,13 +3,9 @@ var rem = 0.01 * 0.5 * parseInt($('html').css('font-size').slice(0, -2));
 
 /* 拖拽
  * @method drag
- * @param {object} $dom 需要移动的 dom 节点
- * @param {number} _top 可移动范围的顶端临界点
- * @param {number} _right 可移动范围的右端临界点
- * @param {number} _bottom 可移动范围的下端临界点
- * @param {number} _left 可移动范围的左端临界点
+ * @param {object} obj 数据对象
 */
-app.drag = function ($dom, _top, _right, _bottom, _left) {
+app.drag = function (obj) {
 	var startX,
 		startY, // 开始触摸的坐标
 		endX,  
@@ -23,10 +19,10 @@ app.drag = function ($dom, _top, _right, _bottom, _left) {
 		endTop,
 		endLeft; // 移动后的元素位置
 
-	width = parseInt($dom.css('width').slice(0, -2));
-	height = parseInt($dom.css('height').slice(0, -2));
+	width = parseInt(obj.$dom.css('width').slice(0, -2));
+	height = parseInt(obj.$dom.css('height').slice(0, -2));
 
-	$dom.on('touchstart', function (e) {
+	obj.$dom.on('touchstart', function (e) {
 		if (e.originalEvent.targetTouches.length !== 1) {
 			return false;
 		}
@@ -35,7 +31,7 @@ app.drag = function ($dom, _top, _right, _bottom, _left) {
 		startY = e.originalEvent.targetTouches[0].clientY;
 	});
 
-	$dom.on('touchmove', function (e) {
+	obj.$dom.on('touchmove', function (e) {
 		if (e.originalEvent.targetTouches.length !== 1) {
 			return false;
 		}
@@ -50,31 +46,30 @@ app.drag = function ($dom, _top, _right, _bottom, _left) {
 		startX = endX;
 		startY = endY;
 
-		top = parseInt($dom.css('top').slice(0, -2));
-		left = parseInt($dom.css('left').slice(0, -2));
+		top = parseInt(obj.$dom.css('top').slice(0, -2));
+		left = parseInt(obj.$dom.css('left').slice(0, -2));
 
 		endTop = top + distanceY;
 		endLeft = left + distanceX;
 
-		_top !== undefined && (endTop < _top ? endTop = _top : endTop);
-		_bottom !== undefined && (endTop > _bottom - height ? endTop = _bottom - height : endTop);
-		_left !== undefined && (endLeft < _left ? endLeft = _left : endLeft);
-		_right !== undefined && (endLeft > _right - width ? endLeft = _right - width : endLeft);
+		obj.top !== undefined && (endTop < obj.top ? endTop = obj.top : endTop);
+		obj.bottom !== undefined && (endTop > obj.bottom - height ? endTop = obj.bottom - height : endTop);
+		obj.left !== undefined && (endLeft < obj.left ? endLeft = obj.left : endLeft);
+		obj.right !== undefined && (endLeft > obj.right - width ? endLeft = obj.right - width : endLeft);
 
 		// 移动
-        $dom.css('top', endTop + 'px');
-        $dom.css('left', endLeft + 'px');
+        obj.$dom.css('top', endTop + 'px');
+        obj.$dom.css('left', endLeft + 'px');
+
+        obj.callback !== undefined ? obj.callback() : 0;
 	});
 };
 
 /* 缩放
  * @method drag
- * @param {object} $dom 需要缩放的 dom 节点
- * @param {number} _minWidth 可缩小的最小宽度
- * @param {number} _maxWidth 可放大的最大宽度
- * @param {number} _scale 手指每缩放 1px 实际元素的缩放大小
+ * @param {object} obj 数据对象
 */
-app.scale = function ($dom, ,_scale, _minWidth, _maxWidth) {
+app.scale = function (obj) {
 	var x1Start,
 		x2Start,
 		y1Start,
@@ -102,15 +97,15 @@ app.scale = function ($dom, ,_scale, _minWidth, _maxWidth) {
 		defaultScale = 1,
 		scale;   // 缩放比例
 
-	width = parseInt($dom.css('width').slice(0, -2));
-	height = parseInt($dom.css('height').slice(0, -2));
-	top = parseInt($dom.css('top').slice(0, -2));
-	left = parseInt($dom.css('left').slice(0, -2));
+	width = parseInt(obj.$dom.css('width').slice(0, -2));
+	height = parseInt(obj.$dom.css('height').slice(0, -2));
+	top = parseInt(obj.$dom.css('top').slice(0, -2));
+	left = parseInt(obj.$dom.css('left').slice(0, -2));
 
 	centerX = left + width / 2;
 	centerY = top + height / 2;
 
-	$dom.on('touchstart', function (e) {
+	obj.$dom.on('touchstart', function (e) {
 		if (e.originalEvent.targetTouches.length !== 2) {
 			return false;
 		}
@@ -124,7 +119,7 @@ app.scale = function ($dom, ,_scale, _minWidth, _maxWidth) {
     	}
 	});
 
-	$dom.on('touchmove', function (e) {
+	obj.$dom.on('touchmove', function (e) {
 		if (e.originalEvent.targetTouches.length !== 2) {
 			return false;
 		}
@@ -150,29 +145,31 @@ app.scale = function ($dom, ,_scale, _minWidth, _maxWidth) {
 		thirdBeforeMove = Math.sqrt(yDistanceBeforeMove * yDistanceBeforeMove + xDistanceBeforeMove * xDistanceBeforeMove);
 		thirdAfterMove = Math.sqrt(yDistanceAfterMove * yDistanceAfterMove + xDistanceAfterMove * xDistanceAfterMove);
 
-        widthStart = parseInt($dom.css('width').slice(0, -2));
-        heightStart = parseInt($dom.css('height').slice(0, -2));
+        widthStart = parseInt(obj.$dom.css('width').slice(0, -2));
+        heightStart = parseInt(obj.$dom.css('height').slice(0, -2));
 
 		// 缩小：xDistanceBeforeMove > xDistanceAfterMove || yDistanceBeforeMove > yDistanceAfterMove
 		// 放大：xDistanceBeforeMove < xDistanceAfterMove || yDistanceBeforeMove < yDistanceAfterMove
 		if (xDistanceBeforeMove > xDistanceAfterMove || yDistanceBeforeMove > yDistanceAfterMove) { // 缩小
-			widthEnd = widthStart - (thirdBeforeMove - thirdAfterMove) * (_scale ? _scale : defaultScale);
-			_minWidth !== undefined && (widthEnd < _minWidth ? widthEnd = _minWidth : widthEnd);
+			widthEnd = widthStart - (thirdBeforeMove - thirdAfterMove) * (obj.scale ? obj.scale : defaultScale);
+			obj.minWidth !== undefined && (widthEnd < obj.minWidth ? widthEnd = obj.minWidth : widthEnd);
 			scale = widthEnd / widthStart;
 		} else if (xDistanceBeforeMove < xDistanceAfterMove || yDistanceBeforeMove < yDistanceAfterMove) { // 放大
-			widthEnd = widthStart + (thirdAfterMove - thirdBeforeMove) * (_scale ? _scale : defaultScale);
-			_maxWidth !== undefined && (widthEnd > _maxWidth ? widthEnd = _maxWidth : widthEnd);
+			widthEnd = widthStart + (thirdAfterMove - thirdBeforeMove) * (obj.scale ? obj.scale : defaultScale);
+			obj.maxWidth !== undefined && (widthEnd > obj.maxWidth ? widthEnd = obj.maxWidth : widthEnd);
 			scale = widthEnd / widthStart;
 		}
 
 		heightEnd = heightStart * scale;
 		
-		$dom.css({
+		obj.$dom.css({
             'width': widthEnd + 'px',
             'height': heightEnd + 'px',
             'top': centerY - heightEnd / 2 + 'px',
             'left': centerX - widthEnd / 2 + 'px'
         });
+
+        obj.callback !== undefined ? obj.callback() : 0;
 	});
 };
 
