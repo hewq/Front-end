@@ -24,10 +24,10 @@
 <script>
 etool.drag({
 	$dom: $('.drag'),
-	top: 0,
-	right: 150,
-	bottom: 150,
-	left: 0,
+	topLimitTo: 0,
+	rightLimitTo: 150,
+	bottomLimitTo: 150,
+	leftLimitTo: 0,
 	callback: function () {
 		console.log(110);
 	}
@@ -37,7 +37,7 @@ etool.scale({
 	$dom: $('.scale'),
 	minWidth: 100,
 	maxWidth: 500,
-	scale: 1,
+	scaleTimes: 1,
 	callback: function () {
 		console.log(120);
 	}

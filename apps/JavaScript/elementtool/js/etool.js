@@ -1,5 +1,28 @@
 var app = {};
-var rem = 0.01 * 0.5 * parseInt($('html').css('font-size').slice(0, -2));
+
+// 起始位置
+app.START_TOP = 0;
+app.START_LEFT = 0;
+
+// 起始大小
+app.START_WIDTH = 0;
+app.START_HEIGHT = 0;
+
+// 移动到指定位置
+app.moveTo = function ($dom, top, left) {
+	$dom.css({
+		top: top + 'px',
+		left: left + 'px'
+	})
+};
+
+// 缩放到指定大小
+app.scaleTo = function ($dom, width, height) {
+	$dom.css({
+		width: top + 'px',
+		height: left + 'px'
+	})
+};
 
 /* 拖拽
  * @method drag
@@ -27,8 +50,13 @@ app.drag = function (obj) {
 			return false;
 		}
 
+		app.START_TOP = parseInt(obj.$dom.css('top').slice(0, -2))
+		app.START_LEFT = parseInt(obj.$dom.css('left').slice(0, -2))
+
     	startX = e.originalEvent.targetTouches[0].clientX;
 		startY = e.originalEvent.targetTouches[0].clientY;
+
+        obj.startCallback !== undefined ? obj.startCallback() : 0;
 	});
 
 	obj.$dom.on('touchmove', function (e) {
@@ -52,16 +80,20 @@ app.drag = function (obj) {
 		endTop = top + distanceY;
 		endLeft = left + distanceX;
 
-		obj.top !== undefined && (endTop < obj.top ? endTop = obj.top : endTop);
-		obj.bottom !== undefined && (endTop > obj.bottom - height ? endTop = obj.bottom - height : endTop);
-		obj.left !== undefined && (endLeft < obj.left ? endLeft = obj.left : endLeft);
-		obj.right !== undefined && (endLeft > obj.right - width ? endLeft = obj.right - width : endLeft);
+		obj.topLimitTo !== undefined && (endTop < obj.topLimitTo ? endTop = obj.topLimitTo : endTop);
+		obj.bottomLimitTo !== undefined && (endTop > obj.bottomLimitTo - height ? endTop = obj.bottomLimitTo - height : endTop);
+		obj.leftLimitTo !== undefined && (endLeft < obj.leftLimitTo ? endLeft = obj.leftLimitTo : endLeft);
+		obj.rightLimitTo !== undefined && (endLeft > obj.rightLimitTo - width ? endLeft = obj.rightLimitTo - width : endLeft);
 
 		// 移动
         obj.$dom.css('top', endTop + 'px');
         obj.$dom.css('left', endLeft + 'px');
 
-        obj.callback !== undefined ? obj.callback() : 0;
+        obj.moveCallback !== undefined ? obj.moveCallback() : 0;
+	});
+
+	obj.$dom.on('touchend', function (e) {
+        obj.endCallback !== undefined ? obj.endCallback() : 0;
 	});
 };
 
@@ -97,8 +129,8 @@ app.scale = function (obj) {
 		defaultScale = 1,
 		scale;   // 缩放比例
 
-	width = parseInt(obj.$dom.css('width').slice(0, -2));
-	height = parseInt(obj.$dom.css('height').slice(0, -2));
+	START_WIDTH = width = parseInt(obj.$dom.css('width').slice(0, -2));
+	START_HEIGHT = height = parseInt(obj.$dom.css('height').slice(0, -2));
 	top = parseInt(obj.$dom.css('top').slice(0, -2));
 	left = parseInt(obj.$dom.css('left').slice(0, -2));
 
@@ -117,6 +149,8 @@ app.scale = function (obj) {
     		x2Start = e.originalEvent.targetTouches[1].clientX;
         	y2Start = e.originalEvent.targetTouches[1].clientY;
     	}
+
+        obj.startCallback !== undefined ? obj.startCallback() : 0;
 	});
 
 	obj.$dom.on('touchmove', function (e) {
@@ -151,11 +185,11 @@ app.scale = function (obj) {
 		// 缩小：xDistanceBeforeMove > xDistanceAfterMove || yDistanceBeforeMove > yDistanceAfterMove
 		// 放大：xDistanceBeforeMove < xDistanceAfterMove || yDistanceBeforeMove < yDistanceAfterMove
 		if (xDistanceBeforeMove > xDistanceAfterMove || yDistanceBeforeMove > yDistanceAfterMove) { // 缩小
-			widthEnd = widthStart - (thirdBeforeMove - thirdAfterMove) * (obj.scale ? obj.scale : defaultScale);
+			widthEnd = widthStart - (thirdBeforeMove - thirdAfterMove) * (obj.scaleTimes ? obj.scaleTimes : defaultScale);
 			obj.minWidth !== undefined && (widthEnd < obj.minWidth ? widthEnd = obj.minWidth : widthEnd);
 			scale = widthEnd / widthStart;
 		} else if (xDistanceBeforeMove < xDistanceAfterMove || yDistanceBeforeMove < yDistanceAfterMove) { // 放大
-			widthEnd = widthStart + (thirdAfterMove - thirdBeforeMove) * (obj.scale ? obj.scale : defaultScale);
+			widthEnd = widthStart + (thirdAfterMove - thirdBeforeMove) * (obj.scaleTimes ? obj.scaleTimes : defaultScale);
 			obj.maxWidth !== undefined && (widthEnd > obj.maxWidth ? widthEnd = obj.maxWidth : widthEnd);
 			scale = widthEnd / widthStart;
 		}
@@ -169,7 +203,11 @@ app.scale = function (obj) {
             'left': centerX - widthEnd / 2 + 'px'
         });
 
-        obj.callback !== undefined ? obj.callback() : 0;
+        obj.moveCallback !== undefined ? obj.moveCallback() : 0;
+	});
+
+	obj.$dom.on('touchend', function (e) {
+		obj.endCallback !== undefined ? obj.endCallback() : 0;
 	});
 };
 
