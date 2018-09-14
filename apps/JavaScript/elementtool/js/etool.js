@@ -33,12 +33,12 @@ app.drag = function (obj) {
 		startY, // 开始触摸的坐标
 		endX,  
 		endY,   // 移动后的坐标
-		distanceX,
-		distanceY,  // 移动的距离
 		top,
 		left,  // 元素位置坐标
 		width,
 		height, // 元素的宽高
+		touchToTop,
+		touchToLeft, 
 		endTop,
 		endLeft; // 移动后的元素位置
 
@@ -56,6 +56,9 @@ app.drag = function (obj) {
     	startX = e.originalEvent.targetTouches[0].clientX;
 		startY = e.originalEvent.targetTouches[0].clientY;
 
+		touchToTop = startY - app.START_TOP;
+		touchToLeft = startX - app.START_LEFT;
+
         obj.startCallback !== undefined ? obj.startCallback() : 0;
 	});
 
@@ -67,18 +70,8 @@ app.drag = function (obj) {
     	endX = e.originalEvent.targetTouches[0].clientX;
 		endY = e.originalEvent.targetTouches[0].clientY;
 
-		distanceX = endX - startX;
-		distanceY = endY - startY;
-
-		// 实时更新起始点
-		startX = endX;
-		startY = endY;
-
-		top = parseInt(obj.$dom.css('top').slice(0, -2));
-		left = parseInt(obj.$dom.css('left').slice(0, -2));
-
-		endTop = top + distanceY;
-		endLeft = left + distanceX;
+		endTop = endY - touchToTop;
+		endLeft = endX - touchToLeft;
 
 		obj.topLimitTo !== undefined && (endTop < obj.topLimitTo ? endTop = obj.topLimitTo : endTop);
 		obj.bottomLimitTo !== undefined && (endTop > obj.bottomLimitTo - height ? endTop = obj.bottomLimitTo - height : endTop);
