@@ -28,8 +28,14 @@ etool.drag({
 	rightLimitTo: 150,
 	bottomLimitTo: 150,
 	leftLimitTo: 0,
-	callback: function () {
-		console.log(110);
+	startCallback: function () {
+		console.log('start');
+	},
+	moveCallback: function () {
+		console.log('move');
+	},
+	endCallback: function () {
+		console.log('end');
 	}
 });
 
@@ -38,8 +44,14 @@ etool.scale({
 	minWidth: 100,
 	maxWidth: 500,
 	scaleTimes: 1,
-	callback: function () {
-		console.log(120);
+	startCallback: function () {
+		console.log('start');
+	},
+	startCallback: function () {
+		console.log('move');
+	},
+	startCallback: function () {
+		console.log('end');
 	}
 });
 </script>
