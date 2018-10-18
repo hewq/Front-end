@@ -1,5 +1,7 @@
 var app = {};
 
+var slideDistance = 80; // 滑动监听距离
+
 // 起始位置
 app.START_TOP = 0;
 app.START_LEFT = 0;
@@ -201,6 +203,206 @@ app.scale = function (obj) {
 
 	obj.$dom.on('touchend', function (e) {
 		obj.endCallback !== undefined ? obj.endCallback() : 0;
+	});
+};
+
+// 滑动监听
+
+/* 左滑
+ * @method leftSlideHandler
+ * @param {object} obj 数据对象
+*/
+app.leftSlideHandler = function (obj) {
+	var startX,
+		startY, // 开始触摸的坐标
+		endX,  
+		endY,   // 移动后的坐标
+		endTop,
+		endLeft, // 移动后的元素位置
+		isLeftSlide; // 是否左滑
+
+	obj.$dom.on('touchstart', function (e) {
+		if (e.originalEvent.targetTouches.length !== 1) {
+			return false;
+		}
+    	startX = e.originalEvent.targetTouches[0].clientX;
+		startY = e.originalEvent.targetTouches[0].clientY;
+
+		isLeftSlide = false;
+	});
+
+	obj.$dom.on('touchmove', function (e) {
+		if (e.originalEvent.targetTouches.length !== 1) {
+			return false;
+		}
+
+    	endX = e.originalEvent.targetTouches[0].clientX;
+		endY = e.originalEvent.targetTouches[0].clientY;
+
+		endTop = endY - startY;
+		endLeft = endX - startX;
+
+		// 判定
+		if (endX < startX && -endLeft > slideDistance && Math.abs(endLeft) > Math.abs(endTop) && !isLeftSlide) {
+			isLeftSlide = true;
+		}
+	});
+
+	obj.$dom.on('touchend', function (e) {
+		if (isLeftSlide) {
+        	obj.success !== undefined ? obj.success() : 0;
+		} else {
+			obj.fail !== undefined ? obj.fail() : 0;
+		}
+	});
+};
+
+/* 右滑
+ * @method rightSlideHandler
+ * @param {object} obj 数据对象
+*/
+app.rightSlideHandler = function (obj) {
+	var startX,
+		startY, // 开始触摸的坐标
+		endX,  
+		endY,   // 移动后的坐标
+		endTop,
+		endLeft, // 移动后的元素位置
+		isRightSlide; // 是否右滑
+
+
+	obj.$dom.on('touchstart', function (e) {
+		if (e.originalEvent.targetTouches.length !== 1) {
+			return false;
+		}
+    	startX = e.originalEvent.targetTouches[0].clientX;
+		startY = e.originalEvent.targetTouches[0].clientY;
+
+		isRightSlide = false;
+	});
+
+	obj.$dom.on('touchmove', function (e) {
+		if (e.originalEvent.targetTouches.length !== 1) {
+			return false;
+		}
+
+    	endX = e.originalEvent.targetTouches[0].clientX;
+		endY = e.originalEvent.targetTouches[0].clientY;
+
+		endTop = endY - startY;
+		endLeft = endX - startX;
+
+		// 判定
+		if (endX > startX && endLeft > slideDistance && Math.abs(endLeft) > Math.abs(endTop) && !isRightSlide) {
+			isRightSlide = true;
+		}
+	});
+
+	obj.$dom.on('touchend', function (e) {
+		if (isRightSlide) {
+			obj.success !== undefined ? obj.success() : 0;
+		} else {
+			obj.fail !== undefined ? obj.fail() : 0;
+		}
+	});
+};
+
+/* 上滑
+ * @method upSlideHandler
+ * @param {object} obj 数据对象
+*/
+app.upSlideHandler = function (obj) {
+	var startX,
+		startY, // 开始触摸的坐标
+		endX,  
+		endY,   // 移动后的坐标
+		endTop,
+		endLeft, // 移动后的元素位置
+		isUpSlide; // 是否上滑
+
+	obj.$dom.on('touchstart', function (e) {
+		if (e.originalEvent.targetTouches.length !== 1) {
+			return false;
+		}
+    	startX = e.originalEvent.targetTouches[0].clientX;
+		startY = e.originalEvent.targetTouches[0].clientY;
+
+		isUpSlide = false;
+	});
+
+	obj.$dom.on('touchmove', function (e) {
+		if (e.originalEvent.targetTouches.length !== 1) {
+			return false;
+		}
+
+    	endX = e.originalEvent.targetTouches[0].clientX;
+		endY = e.originalEvent.targetTouches[0].clientY;
+
+		endTop = endY - startY;
+		endLeft = endX - startX;
+
+		// 判定
+		if (endY < startY && -endTop > slideDistance && Math.abs(endLeft) < Math.abs(endTop) && !isUpSlide) {
+			isUpSlide = true;
+		}
+	});
+
+	obj.$dom.on('touchend', function (e) {
+		if (isUpSlide) {
+			obj.success !== undefined ? obj.success() : 0;
+		} else {
+			obj.fail !== undefined ? obj.fail() : 0;
+		}
+	});
+};
+
+/* 下滑
+ * @method downSlideHandler
+ * @param {object} obj 数据对象
+*/
+app.downSlideHandler = function (obj) {
+	var startX,
+		startY, // 开始触摸的坐标
+		endX,  
+		endY,   // 移动后的坐标
+		endTop,
+		endLeft, // 移动后的元素位置
+		isDownSlide; // 是否下滑
+
+
+	obj.$dom.on('touchstart', function (e) {
+		if (e.originalEvent.targetTouches.length !== 1) {
+			return false;
+		}
+    	startX = e.originalEvent.targetTouches[0].clientX;
+		startY = e.originalEvent.targetTouches[0].clientY;
+
+		isDownSlide = false;
+	});
+
+	obj.$dom.on('touchmove', function (e) {
+		if (e.originalEvent.targetTouches.length !== 1) {
+			return false;
+		}
+
+    	endX = e.originalEvent.targetTouches[0].clientX;
+		endY = e.originalEvent.targetTouches[0].clientY;
+
+		endTop = endY - startY;
+		endLeft = endX - startX;
+
+		// 判定
+		if (endY > startY && endTop > slideDistance && Math.abs(endLeft) < Math.abs(endTop) && !isDownSlide) {
+			isDownSlide = true;
+		}
+	});
+
+	obj.$dom.on('touchend', function (e) {
+		if (isDownSlide) {
+			obj.success !== undefined ? obj.success() : 0;
+		} else {
+			obj.fail !== undefined ? obj.fail() : 0;
+		}
 	});
 };
 
