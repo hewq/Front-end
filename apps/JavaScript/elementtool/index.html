@@ -17,6 +17,7 @@
     <div class="container">
         <div class="drag"></div>
         <div class="scale"></div>
+        <div class="slide"></div>
     </div>
 
 <script src="//ossweb-img.qq.com/images/js/jquery/jquery-1.11.3.min.js"></script>
@@ -52,6 +53,46 @@ etool.scale({
 	},
 	startCallback: function () {
 		console.log('end');
+	}
+});
+
+etool.leftSlideHandler({
+	$dom: $('body'),
+	success: function () {
+		console.log('left slide');
+	},
+	fail: function () {
+		console.log('left fail');
+	}
+});
+
+etool.rightSlideHandler({
+	$dom: $('body'),
+	success: function () {
+		console.log('right slide');
+	},
+	fail: function () {
+		console.log('right fail');
+	}
+});
+
+etool.upSlideHandler({
+	$dom: $('body'),
+	success: function () {
+		console.log('up slide');
+	},
+	fail: function () {
+		console.log('up fail');
+	}
+});
+
+etool.downSlideHandler({
+	$dom: $('body'),
+	success: function () {
+		console.log('down slide');
+	},
+	fail: function () {
+		console.log('down fail');
 	}
 });
 </script>
