@@ -49,7 +49,7 @@ var has3d,
 
   corners = {
     backward: ['bl', 'tl'],
-    forward: ['br', 'tr'],
+    forward: ['br', 'bl'],
     all: ['tl', 'bl', 'tr', 'br', 'l', 'r']
   },
 

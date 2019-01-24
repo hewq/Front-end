@@ -29,29 +29,29 @@
 		</div>
 	</div>
 <script src="//ossweb-img.qq.com/images/js/jquery/jquery-1.11.3.min.js"></script>
-<script src="js/turn.min.js"></script>
+<script src="js/turn.js"></script>
 <script type="text/javascript">
 	var rem = 0.01 * 0.5 * parseInt($('html').css('font-size').slice(0, -2));
 	$(".flipbook").turn({
-			// Width
+			// 硬件加速
+			acceleration: true,
 
-			width:498*2*rem,
+			// Width
+			width:498*rem,
 			
 			// Height
-
 			height:646*rem,
 
 			// Elevation
-
 			elevation: 50,
 			
 			// Enable gradients
-
 			gradients: true,
 			
 			// Auto center this flipbook
+			autoCenter: false,
 
-			autoCenter: false
+			display: 'single'
 
 	});
 </script>
