@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/hewq/Front-end#readme",
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "lottie-web": "^5.4.4"
   }
 }
