@@ -1,0 +1,43 @@
+html, body {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	width: 350px;
+	height: 350px
+	margin: 0 auto;
+}
+
+.e-table {
+	position: absolute;
+	background-color: #fff;
+	border-collapse: collapse;
+	font-size: 14px;
+}
+
+.e-table tr {
+	height: 40px;
+	width: 350px;
+}
+
+.e-table tr:nth-child(2) {
+	height: 30px;
+	line-height: 30px;
+}
+
+.e-table td {
+	width: 40px;
+	text-align: center;
+	color: #999;
+}
+
+.e-table td.active {
+	background-color: #3385ff;
+	border-radius: 5px;
+	color: #fff;
+}
+
+
+
