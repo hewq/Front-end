@@ -39,5 +39,18 @@ html, body {
 	color: #fff;
 }
 
+.has-num:hover {
+	border-radius: 5px;
+	background-color: #669966;
+	color: #fff;
+	cursor: pointer;
+}
 
+.prev-month {
+	cursor: pointer;
+}
+
+.next-month {
+	cursor: pointer;
+}
 
