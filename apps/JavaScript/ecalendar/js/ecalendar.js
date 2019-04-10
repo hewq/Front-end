@@ -12,7 +12,9 @@
 		curTodayNum = todayNum,
 		curTodayWeek = todayWeek;
 
-	function setCalendar(year, month, todayNum, todayWeek, hasActive) {
+	let curIpt;
+
+	function setCalendar(parent, year, month, todayNum, todayWeek, hasActive) {
 		if (todayWeek === 0) {
 			todayWeek = 7;
 		}
@@ -31,6 +33,8 @@
 			}
 		} else if (arr31.indexOf(month) !== -1) {
 			daysOfMonth = 31;
+		} else {
+			daysOfMonth = 30;
 		}
 
 		let table = `
@@ -50,7 +54,7 @@
 				<td>Sat</td>
 			</tr>
 		</table>`;
-		$(table).appendTo('body');
+		$(table).appendTo(parent);
 		let $table = $('.e-table');
 
 		let td = '<td></td>';
@@ -90,8 +94,6 @@
 		return year + '-' + month + '-' + day;
 	}
 
-	setCalendar(year, month, todayNum, todayWeek, true);
-
 	$(document).on('click', '.prev-month', function () {
 		if (curMonth === 1) {
 			curMonth = 12;
@@ -106,7 +108,7 @@
 		curTodayWeek = date.getDay();
 
 		$('.e-table').remove();
-		setCalendar(curYear, curMonth, curTodayNum, curTodayWeek, false);
+		setCalendar(curIpt.parent(), curYear, curMonth, curTodayNum, curTodayWeek, false);
 	});
 
 	$(document).on('click', '.next-month', function () {
@@ -123,10 +125,17 @@
 		curTodayWeek = date.getDay();
 
 		$('.e-table').remove();
-		setCalendar(curYear, curMonth, curTodayNum, curTodayWeek, false);
+		setCalendar(curIpt.parent(), curYear, curMonth, curTodayNum, curTodayWeek, false);
 	});
 
 	$(document).on('click', '.has-num', function () {
-		console.log(formatDate(curYear, curMonth, $(this).html()));
+		curIpt.val(formatDate(curYear, curMonth, $(this).html()));
+		$('.e-table').remove();
+	});
+
+	$('.ipt-calendar').on('click', function () {
+		$('.e-table').remove();
+		curIpt = $(this);
+		setCalendar(curIpt.parent(), year, month, todayNum, todayWeek, true);
 	});
 }

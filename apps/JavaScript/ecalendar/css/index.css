@@ -10,11 +10,22 @@ html, body {
 	margin: 0 auto;
 }
 
+.cal-container {
+	position: relative;
+	margin: 50px;
+}
+
+.ipt-calendar {
+	width: 150px;
+	height: 30px;
+}
+
 .e-table {
 	position: absolute;
-	background-color: #fff;
+	background-color: #eee;
 	border-collapse: collapse;
 	font-size: 14px;
+	z-index: 100;
 }
 
 .e-table tr {
