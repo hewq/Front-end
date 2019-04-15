@@ -80,7 +80,7 @@
 			for (let i = 0; i < 7; i++) {
 				if (index === daysOfMonth) break;
 				if (index === todayNum - 1 && hasActive) {
-					tdStart += '<td class="active">' + (++index) + '</td>';
+					tdStart += '<td class="has-num active">' + (++index) + '</td>';
 				} else {
 					tdStart += '<td class="has-num">' + (++index) + '</td>';
 				}
