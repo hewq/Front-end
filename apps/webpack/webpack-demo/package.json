@@ -31,7 +31,7 @@
     "xml-loader": "^1.2.1"
   },
   "dependencies": {
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.13",
     "puppeteer": "^1.3.0"
   }
 }
