@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function _call(context, ...args) {
+            context = context || window
+            const fn = Symbol
+            context[fn] = this
+            let res = context[fn](...args)
+            delete context[fn]
+            return res
+        }
+        Function.prototype._call = _call
+
+        function greet(a, b) {
+            console.log(this.animal, a, b)
+        }
+        let obj = {
+            animal: 'cats'
+        }
+        greet.call(obj, 'dogs', 'ducks')
+        greet._call(obj, 'dogs', 'ducks')
+
+        // ----------------------------------
+
+        function _apply(context, arr) {
+            context = context || window
+            const fn = Symbol()
+            context[fn] = this
+            let res
+            if (arr) {
+                if (!Array.isArray(arr)) {
+                    console.error('not Array')
+                } else {
+                    res = context[fn](...arr)
+                }
+            } else {
+                res = context[fn]()
+            }
+            delete context[fn]
+            return res
+        }
+        Function.prototype._apply = _apply
+
+        greet.apply(obj, ['dogs', 'ducks'])
+        greet._apply(obj, ['dogs', 'ducks'])
+
+        // -----------------------------------
+
+        function _bind(context, ...args) {
+            context = context || window
+            const fn = Symbol()
+            context[fn] = this
+            return function (...args2) {
+                let res
+                res = context[fn](...args, ...args2)
+                return res
+            }
+        }
+        Function.prototype._bind = _bind
+
+        greet.bind(obj, 'dogs')('ducks')
+        greet._bind(obj, 'dogs')('ducks')
+    </script>
+</body>
+</html>
