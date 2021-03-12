@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Parent(name) {
+            this.name = name
+        }
+        Parent.prototype.getName = function () {
+            console.log(this.name)
+        }
+
+        function Child(name, age) {
+            Parent.call(this, name)
+            this.age = age
+        }
+
+        Child.prototype = Object.create(Parent.prototype)
+        Child.prototype.constructor = Child
+
+        let parent = new Parent('parent')
+        parent.getName()
+        let child = new Child('child', 1)
+        child.getName()
+    </script>
+</body>
+</html>
