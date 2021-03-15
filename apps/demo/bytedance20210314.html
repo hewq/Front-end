@@ -83,7 +83,7 @@
         function throttle(fn, delay) {
             let prev = Date.now()
 
-            return function (...args) {
+            return (...args) => {
                 let now = Date.now()
 
                 if (now - prev >= delay) {
