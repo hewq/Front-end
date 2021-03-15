@@ -92,6 +92,28 @@
                 }
             }
         }
+
+        // --------------------------------------
+        var res = []
+        var total = 0
+        var a = 3
+
+        function fn(a) {
+            let i = 0
+            for (; i < 3; i++) {
+                ((i) => {
+                    res[i] = function () {
+                        total += i * a
+                        console.log(total)
+                    }
+                })(i)
+            }
+        }
+
+        fn(1)
+        res[0]()
+        res[1]()
+        res[2]()
     </script>
 </body>
 </html>
