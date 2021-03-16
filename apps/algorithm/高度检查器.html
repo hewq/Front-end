@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * 学校在拍年度纪念照时，一般要求学生按照 非递减 的高度顺序排列。
+         * 请你返回能让所有学生以 非递减 高度排列的最小必要移动人数。
+         * 注意，当一组学生被选中时，他们之间可以以任何可能的方式重新排序，而未被选中的学生应该保持不动。
+         */
+
+        // 输入：heights = [1,1,4,2,1,3]
+        // 输出：3 
+        // 解释：
+        // 当前数组：[1,1,4,2,1,3]
+        // 目标数组：[1,1,1,2,3,4]
+        // 在下标 2 处（从 0 开始计数）出现 4 vs 1 ，所以我们必须移动这名学生。
+        // 在下标 4 处（从 0 开始计数）出现 1 vs 3 ，所以我们必须移动这名学生。
+        // 在下标 5 处（从 0 开始计数）出现 3 vs 4 ，所以我们必须移动这名学生。
+
+        // 输入：heights = [5,1,2,3,4]
+        // 输出：5
+
+        // 输入：heights = [1,2,3,4,5]
+        // 输出：0
+    </script>
+    <script>
+        /**
+         * @param {number[]} heights
+         * @return {number}
+         */
+        var heightChecker = function (heights) {
+            // code here
+            let res = 0
+            let arr = JSON.parse(JSON.stringify(heights))
+            arr.sort((a, b) => a - b)
+
+            for (let i = 0, len = heights.length; i < len; i++) {
+                if (arr[i] !== heights[i]) {
+                    res++
+                }
+            }
+
+            return res
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 给你一个按 非递减顺序 排序的整数数组 nums，返回 每个数字的平方 组成的新数组，要求也按 非递减顺序 排序。
+
+        // 示例 1：
+        // 输入：nums = [-4,-1,0,3,10]
+        // 输出：[0,1,9,16,100]
+        // 解释：平方后，数组变为 [16,1,0,9,100]
+        // 排序后，数组变为 [0,1,9,16,100]
+
+        // 示例 2：
+        // 输入：nums = [-7,-3,2,3,11]
+        // 输出：[4,9,9,49,121]
+    </script>
+    <script>
+        /**
+         * @param {number[]} nums
+         * @return {number[]}
+         */
+        var sortedSquares = function (nums) {
+
+            let len = nums.length
+            let res = Array(len)
+            let left = 0
+            let right = len - 1
+            let leftVal
+            let rightVal
+
+            for (let i = len - 1; i >= 0; i--) {
+                leftVal = nums[left] * nums[left]
+                rightVal = nums[right] * nums[right]
+
+                if (leftVal > rightVal) {
+                    res[i] = leftVal
+                    left++
+                } else {
+                    res[i] = rightVal
+                    right--
+                }
+            }
+            return res
+        };
+    </script>
+</body>
+
+</html>
