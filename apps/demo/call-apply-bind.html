@@ -10,7 +10,7 @@
     <script>
         function _call(context, ...args) {
             context = context || window
-            const fn = Symbol
+            const fn = Symbol()
             context[fn] = this
             let res = context[fn](...args)
             delete context[fn]
@@ -55,12 +55,9 @@
 
         function _bind(context, ...args) {
             context = context || window
-            const fn = Symbol()
-            context[fn] = this
+            const fn = this
             return function (...args2) {
-                let res
-                res = context[fn](...args, ...args2)
-                return res
+                fn.apply(context, [...args, ...args2])
             }
         }
         Function.prototype._bind = _bind
