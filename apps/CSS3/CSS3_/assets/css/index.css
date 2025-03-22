@@ -1,8 +1,0 @@
-.border{ width: 200px; height: 200px; border: 1px solid bisque; border-radius: 50%; box-shadow: 10px 20px 20px #ff6600 inset;}
-.linear_gradient{ width: 200px; height: 200px; background: linear-gradient(#3366ff ,#6699ff ,#0000ff);}
-.radial_gradient{ width: 200px; height: 200px; background: radial-gradient(#3366ff ,#6699ff ,#0000ff);}
-.watch{ position: relative; width: 300px; height: 300px; margin: 300px; padding: 0; display: inline-block; border-radius: 50%; background-image: url("../images/watch.png");}
-.center{ width: 20px; height: 20px; position: absolute; top: 50%; left: 50%; margin-left: -10px; margin-top: -10px; border-radius: 50%; background: radial-gradient(rgba(255,255,255,1),rgba(0,0,0,0)); z-index: 2;}
-.s{ width: 140px; height: 1px; background-color: floralwhite; position: absolute; top: 50%; margin-top: -0.5px; left: 50%; transform: rotate(60deg); transform-origin: left center; }
-.m{ width: 100px; height: 2px; margin-top: -1px; transform: rotate(90deg); background-color: #fff;}
-.h{ width: 60px; height: 3px; margin-top: -1.5px; transform: rotate(190deg); background-color: #fff;}

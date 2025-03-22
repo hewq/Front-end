@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>迭代器模式</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * 迭代器模式是指提供一种方法顺序访问一个聚合对象中的各个元素，而又不需要暴露该对象的内部表示。
+         */
+
+        // -----内部迭代器-----
+
+        let each = function (ary, callback) {
+            // 内部迭代器的迭代规则已经被提前规
+            for (let i = 0, l = ary.length; i < l; i++) {
+                callback.call(ary[i], i, ary[i])
+            }
+        }
+
+        each([1, 2, 3], function (i, n) {
+            console.log([i, n])
+        })
+
+        // -----外部迭代器-----
+
+        let Iterator = function (obj) {
+            let current = 0
+
+            let next = function () {
+                current++
+            }
+
+            let isDone = function () {
+                return current >= obj.length
+            }
+
+            let getCurrItem = function () {
+                return obj[current]
+            }
+
+            return {
+                next,
+                isDone,
+                getCurrItem
+            }
+        }
+
+        let compare = function (iterator1, iterator2) {
+
+            while (!iterator1.isDone() || !iterator2.isDone()) {
+                if (iterator1.getCurrItem() !== iterator2.getCurrItem()) {
+                    throw new Error('iterator1 和 iterator2 不相等')
+                }
+                iterator1.next()
+                iterator2.next()
+            }
+            console.log('iterator1 和 iterator2 相等')
+        }
+
+        let iterator1 = Iterator([1, 2, 3])
+        let iterator2 = Iterator([1, 2, 3])
+
+        compare(iterator1, iterator2)
+
+        // -----迭代器模式的应用举例-----
+
+        let getActiveUploadObj = function () {
+            try {
+                return new ActiveXObject('TXFTNActiveX.FTNUpload')
+            } catch (e) {
+                return false
+            }
+        }
+
+        let getFlashUploadObj = function () {
+            let supportFlash = function () {
+                return true
+            }
+            if (supportFlash()) {
+                return {}
+            }
+            return false
+        }
+
+        let getFormUploadObj = function () {
+            return {}
+        }
+
+        let iteratorUploadObj = function () {
+            for (let i = 0, fn; fn = arguments[i++];) {
+                let uploadObj = fn()
+                if (uploadObj) {
+                    return uploadObj
+                }
+            }
+        }
+        let uploadObj = iteratorUploadObj(getActiveUploadObj, getFlashUploadObj, getFormUploadObj)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #000000;
+        }
+        .box {
+            width: 150px;
+            height: 50px;
+        }
+        .normal {
+            position: relative;
+            height: 50px;
+            width: 100%;
+            background-color: grey;
+            transition: all 1s;
+            cursor: pointer;
+            padding-right: 50px;
+            box-sizing: border-box;
+        }
+        .normal:hover {
+            background-color: green;
+        }
+        .normal::after {
+            content: '';
+            position: absolute;
+            height: 50px;
+            top: 0;
+            width: 50px;
+            left: 0;
+            background-color: #ffffff;
+            transition: all 1s;
+        }
+        .normal:hover::after {
+            left: calc(100% - 50px);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="normal"></div>
+    </div>
+
+    <script>
+        // --------------------------------------
+        (async function () {
+            async function async1() {
+                console.log('async1 start')
+                await async2()
+                console.log('async1 end')
+            }
+
+            async function async2() {
+                console.log('async2')
+            }
+
+            console.log('script start')
+            setTimeout(() => {
+                console.log('timeout')
+            }, 0)
+
+            await async1()
+
+            new Promise((resolve) => {
+                console.log('promise1')
+                resolve()
+            }).then(() => {
+                console.log('promise2')
+            })
+            console.log('script end')
+        })()
+
+        // script start, async1 start, async2, promise1, script end, async1 end, promise2, timeout
+        // script start, async1 start, async2, async1 end, promise1, script end, promise2, timeout
+
+        // --------------------------------------
+        // 节流函数
+        function throttle(fn, delay) {
+            let prev = Date.now()
+
+            return (...args) => {
+                let now = Date.now()
+
+                if (now - prev >= delay) {
+                    fn(...args)
+                    prev = Date.now()
+                }
+            }
+        }
+
+        // --------------------------------------
+        var res = []
+        var total = 0
+        var a = 3
+
+        function fn(a) {
+            let i = 0
+            for (; i < 3; i++) {
+                ((i) => {
+                    res[i] = function () {
+                        total += i * a
+                        console.log(total)
+                    }
+                })(i)
+            }
+        }
+
+        fn(1)
+        res[0]()
+        res[1]()
+        res[2]()
+    </script>
+</body>
+</html>

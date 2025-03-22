@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let quickSort = (arr) => {
+            let quick = (arr, left, right) => {
+                if (right < left + 1) {
+                    return
+                }
+                let pivot = arr[Math.floor((left + right) / 2)]
+                let leftIndex = left
+                let rightIndex = right
+
+                while (leftIndex <= rightIndex) {
+                    while (arr[leftIndex] > pivot) {
+                        leftIndex++
+                    }
+
+                    while (arr[rightIndex] < pivot) {
+                        rightIndex--
+                    }
+
+                    if (leftIndex <= rightIndex) {
+                        [arr[leftIndex], arr[rightIndex]] = [arr[rightIndex], arr[leftIndex]]
+                        leftIndex++
+                        rightIndex--
+                    }
+                }
+                quick(arr, left, leftIndex - 1)
+                quick(arr, leftIndex, right)
+            }
+            quick(arr, 0, arr.length - 1)
+        }
+        let arr = [-1, 2, 0]
+        quickSort(arr)
+        console.log(arr)
+    </script>
+</body>
+</html>

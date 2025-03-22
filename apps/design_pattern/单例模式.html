@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>单例模式</title>
+</head>
+
+<body>
+    <button id="loginBtn">登录</button>
+    <script>
+        /*
+         *  单例模式的核心是确保一个类只有一个实例，并提供全局访问。
+         */
+
+        // 用代理实现单例模式
+        let CreateDiv = function (html) {
+            this.html = html
+            this.init()
+        }
+
+        CreateDiv.prototype.init = function () {
+            let div = document.createElement('div')
+            div.innerHTML = this.html
+            document.body.appendChild(div)
+        }
+
+        let ProxySingletonCreateDiv = (function () {
+            let instance
+            return function (html) {
+                if (!instance) {
+                    instance = new CreateDiv(html)
+                }
+                return instance
+            }
+        })()
+
+        let a = new ProxySingletonCreateDiv('a')
+        let b = new ProxySingletonCreateDiv('b')
+        console.log(a === b)
+
+        // 通用的惰性单例
+        let getSingle = function (fn) {
+            let result;
+            return function () {
+                return result || (result = fn.apply(this, arguments))
+            }
+        }
+
+        let createLoginLayer = function () {
+            let div = document.createElement('div')
+            div.innerHTML = '我是登录弹窗'
+            div.style.display = 'none'
+            document.body.appendChild(div)
+            return div
+        }
+
+        let createSingleLoginLayer = getSingle(createLoginLayer)
+
+        document.getElementById('loginBtn').onclick = function () {
+            let loginLayer = createSingleLoginLayer()
+            loginLayer.style.display = 'block'
+        }
+
+        let createSingleIframe = getSingle(function () {
+            let iframe = document.createElement('iframe')
+            document.body.appendChild(iframe)
+            return iframe
+        })
+
+        document.getElementById('loginBtn').onclick = function () {
+            let iframeLayer = createSingleIframe()
+            iframeLayer.src = 'http://baidu.com'
+        }
+    </script>
+</body>
+
+</html>

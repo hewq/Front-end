@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 编写一个方法，找出两个数字a和b中最大的那一个。不得使用if-else或其他比较运算符。
+
+        // 示例：
+        // 输入： a = 1, b = 2
+        // 输出： 2
+    </script>
+    <script>
+        /**
+         * @param {number} a
+         * @param {number} b
+         * @return {number}
+         */
+        var maximum = function (a, b) {
+            let aSign = a >>> 63
+            let bSign = b >>> 63
+            let diff = aSign ^ bSign
+            let k = (a - b) >>> 63
+            k = k & (diff ^ 1) | aSign & diff
+            return a * (k ^ 1) + b * k
+        };
+        let res = maximum(2147483647, -2147483648)
+        console.log(res)
+    </script>
+</body>
+
+</html>

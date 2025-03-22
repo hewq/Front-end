@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj = {
+            a: 10,
+            b: function () {},
+            c: /\d$/,
+            d: new Date(),
+            e: [10, [100, 200]],
+            f: {
+                x: 1,
+                y: 2
+            },
+            g: undefined,
+            h: null
+        }
+
+        let deepCopy = (obj) => {
+            if (obj === null) {
+                return null
+            }
+
+            if (typeof obj !== 'object') {
+                return obj
+            }
+
+            if (obj instanceof RegExp) {
+                return new RegExp(obj)
+            }
+
+            if (obj instanceof Date) {
+                return new Date(obj)
+            }
+
+            let newObj = new obj.constructor
+
+            for (let key in obj) {
+                if (obj.hasOwnProperty(key)) {
+                    newObj[key] = deepCopy(obj[key])
+                }
+            }
+
+            return newObj
+        }
+
+        let newObj = deepCopy(obj)
+
+        console.log(obj)
+        console.log(newObj)
+        
+    </script>
+</body>
+</html>

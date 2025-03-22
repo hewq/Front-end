@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组合模式</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * 组合模式最大的优点在于可以一致地对待组合对象和基本对象。
+         */
+
+        // -----组合模式的例子——扫描文件夹-----
+
+        let Folder = function (name) {
+            this.name = name
+            this.parent = null
+            this.files = []
+        }
+
+        Folder.prototype.add = function (file) {
+            file.parent = this
+            this.files.push(file)
+        }
+
+        Folder.prototype.scan = function () {
+            console.log('开始扫描文件夹：' + this.name)
+            for (let i = 0, file, files = this.files; file = files[i++];) {
+                file.scan()
+            }
+        }
+
+        Folder.prototype.remove = function () {
+            if (!this.parent) {
+                return
+            }
+
+            for (let files = this.parent.files, l = files.length - 1; l >= 0; l--) {
+                let file = files[l]
+                if (file === this) {
+                    files.splice(l, 1)
+                }
+            }
+        }
+
+        let File = function (name) {
+            this.name = name
+            this.parent = null
+        }
+
+        File.prototype.add = function () {
+            throw new Error('文件下面不能再添加文件')
+        }
+
+        File.prototype.scan = function () {
+            console.log('开始扫描文件：' + this.name)
+        }
+
+        File.prototype.remove = function () {
+            if (!this.parent) {
+                return
+            }
+
+            for (let files = this.parent.files, l = files.length - 1; l >= 0; l--) {
+                let file = files[l]
+                if (file === this) {
+                    files.splice(l, 1)
+                }
+            }
+        }
+
+        let folder = new Folder('folder')
+        let folder1 = new Folder('folder1')
+        let folder2 = new Folder('folder2')
+
+        let file1 = new File('file1')
+        let file2 = new File('file2')
+        let file3 = new File('file3')
+
+        folder1.add(file1)
+        folder2.add(file2)
+
+        folder.add(folder1)
+        folder.add(folder2)
+        folder.add(file3)
+
+        let folder3 = new Folder('folder3')
+        let file4 = new File('file4')
+        folder3.add(file4)
+
+        let file5 = new File('file5')
+
+        folder.add(folder3)
+        folder.add(file5)
+
+        folder2.remove()
+        folder.scan()
+    </script>
+</body>
+
+</html>

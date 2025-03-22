@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // -------------------------
+        // var b = 10;
+        (function b() {
+            b = 20
+            console.log(b) // function 6 的字符串
+        })()
+
+        // -------------------------
+        var a = 10;
+        (function () {
+            console.log(a) // undefined
+            a = 5
+            console.log(window.a) // 10
+            var a = 20;
+            console.log(a) // 20
+        })()
+
+        // -------------------------
+        // function changeObjProperty(o) {
+        //     o.siteUrl = "http://www.baidu.com";
+        //     o = new Object();
+        //     o.siteUrl = "http://www.google.com";
+        // }
+        // let webSite = new Object();
+        // changeObjProperty(webSite);
+        // console.log(webSite.siteUrl); // "http://www.baidu.com"
+
+        function changeObjProperty(o) {
+            o.siteUrl = "http://www.baidu.com";
+            o = new Object();
+            o.siteUrl = "http://www.google.com";
+            return o;
+        }
+        let webSite = new Object();
+        changeObjProperty(webSite);
+        console.log(webSite.siteUrl); // "http://www.baidu.com"
+        let newSite = changeObjProperty(webSite);
+        console.log(newSite.siteUrl); // "http://www.google.com"
+
+        // -------------------------
+        var fullName = 'a';
+        var obj = {
+            fullName: 'b',
+            prop: {
+                fullName: 'c',
+                getFullName: function () {
+                    console.log(this);
+                    return this.fullName
+                }
+            }
+        }
+        console.log(obj.prop.getFullName()); // obj.prop 对象字符串 'c'
+        var test = obj.prop.getFullName;
+        console.log(test()); // window 对象 'a'
+
+        // -------------------------
+        var num = 1;
+        var myObject = {
+            num: 2,
+            add: function () {
+                this.num = 3;
+                (function () {
+                    console.log(this.num);
+                    this.num = 4;
+                })();
+                console.log(this.num);
+            },
+            sub: function () {
+                console.log(this.num)
+            }
+        }
+        myObject.add(); // 1 3
+        console.log(myObject.num); // 3
+        console.log(num); // 4
+        var sub = myObject.sub;
+        sub(); // 4
+
+        // -------------------------
+        setTimeout(function () {
+            console.log(1)
+        }, 0)
+        new Promise(function executor(resolve) {
+            console.log(2);
+            for (var i = 0; i < 100; i++) {
+                i == 99 && resolve();
+            }
+            console.log(3);
+        }).then(function () {
+            console.log(4);
+        });
+        console.log(5);
+        // 2 3 5 4 1
+
+        // -------------------------
+        var arr = [3, 15, 8, 29, 102, 22]
+        console.log(arr.sort()) // [102, 15, 22, 29, 3, 8]
+
+        // -------------------------
+        var obj = {
+            '2': 3,
+            '3': 4,
+            'length': 2,
+            'splice': Array.prototype.splice,
+            'push': Array.prototype.push
+        }
+        obj.push(1)
+        obj.push(2)
+        console.log(obj)
+
+        /** array push 源码
+        function ArrayPush() {
+            // 被push的对象的长度；this指向了调用他的对象
+            var n = TO_TNIY32(this.lengtt);
+            // push的参数个数
+            var m = % _ArgumentsLength();
+            for (var i = 0; i < m; i++) {
+                // 复制元素
+                this[i + n] = % _arguments(i);
+            }
+            this.length = n + m;
+            return this.length;
+        }
+        */
+
+        // -------------------------
+        var a = {
+            n: 1
+        };
+        var b = a;
+        a.x = a = {
+            n: 2
+        };
+
+        console.log(a.x) // undefined
+        console.log(b.x) // {n: 2}
+
+        // -------------------------
+        var a = {},
+            b = '123',
+            c = 123;
+        a[b] = 'b';
+        a[c] = 'c';
+        console.log(a[b]); // 'c'
+
+        // -------------------------
+        var a = {},
+            b = Symbol('123'),
+            c = Symbol('123');
+        a[b] = 'b';
+        a[c] = 'c';
+        console.log(a[b]); // 'b'
+
+        // -------------------------
+        var a = {},
+            b = {
+                key: '123'
+            },
+            c = {
+                key: '456'
+            };
+        a[b] = 'b';
+        a[c] = 'c';
+        console.log(a[b]); // 'c'
+
+        // -------------------------
+        {
+            function Foo() {
+                Foo.a = function () {
+                    console.log(1)
+                }
+                this.a = function () {
+                    console.log(2)
+                }
+            }
+            Foo.prototype.a = function () {
+                console.log(3)
+            }
+            Foo.a = function () {
+                console.log(4)
+            }
+            Foo.a(); // 4
+            let obj = new Foo();
+            obj.a(); // 2
+            Foo.a(); // 1
+        }
+
+        // -------------------------
+        String('11') == new String('11'); // true
+        String('11') === new String('11'); // false
+
+        // -------------------------
+        var name = 'Tom';
+        (function () {
+            if (typeof name == 'undefined') {
+                var name = 'Jack';
+                console.log('Goodbye ' + name);
+            } else {
+                console.log('Hello ' + name);
+            }
+        })();
+        // 'Goodbye Jack'
+
+        // -------------------------
+        1 + "1" // "11"
+
+        2 * "2" // 4
+
+        [1, 2] + [2, 1] // "1, 22, 1"
+
+        "a" + +"b" // "aNaN"
+
+        // -------------------------
+        function wait() {
+            return new Promise(resolve =>
+                setTimeout(resolve, 10 * 1000)
+            )
+        }
+
+        async function main() {
+            console.time();
+            const x = wait();
+            const y = wait();
+            const z = wait();
+            await x;
+            await y;
+            await z;
+            console.timeEnd();
+        }
+        main();
+    </script>
+</body>
+
+</html>

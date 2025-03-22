@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>策略模式</title>
+</head>
+
+<body>
+    <div style="position: absolute; background: blue" id="div">我是 div</div>
+    <form action="#" id="registerForm" method="post">
+        请输入用户名：<input type="text" name="userName">
+        请输入密码：<input type="text" name="password">
+        请输入手机号码：<input type="text" name="phoneNumber">
+        <button>提交</button>
+    </form>
+    <script>
+        /**
+         * 策略模式的定义是：定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。
+         * 
+         * 一个基于策略模式的程序至少由两部分组成。
+         * 第一个部分是一组策略类，策略类封装了具体的算法，并负责具体的计算过程。
+         * 第二个部分是环境类 Context，Context 接受客户的请求，随后把请求委托给某一个策略类。
+         * 要做到这点，说明 Context 中要维持对某个策略对象的引用。
+         */
+
+        // -----模仿传统面向对象语言中的实现-----
+
+        let performanceS = function () {}
+
+        performanceS.prototype.calculate = function (salary) {
+            return salary * 4
+        }
+
+        let performanceA = function () {}
+
+        performanceA.prototype.calculate = function (salary) {
+            return salary * 3
+        }
+
+        let performanceB = function () {}
+
+        performanceB.prototype.calculate = function (salary) {
+            return salary * 2
+        }
+
+        let Bonus = function () {
+            this.salary = null
+            this.strategy = null
+        }
+
+        Bonus.prototype.setSalary = function (salary) {
+            this.salary = salary
+        }
+
+        Bonus.prototype.setStrategy = function (strategy) {
+            this.strategy = strategy
+        }
+
+        Bonus.prototype.getBonus = function () {
+            return this.strategy.calculate(this.salary)
+        }
+
+        let bonus = new Bonus()
+
+        bonus.setSalary(10000)
+        bonus.setStrategy(new performanceS())
+
+        console.log(bonus.getBonus())
+
+        bonus.setStrategy(new performanceA())
+        console.log(bonus.getBonus())
+
+        // -----JavaScript 版本的策略模式-----
+
+        let strategies = {
+            'S': function (salary) {
+                return salary * 4
+            },
+            'A': function (salary) {
+                return salary * 3
+            },
+            'B': function (salary) {
+                return salary * 2
+            }
+        }
+
+        let calculateBonus = function (level, salary) {
+            return strategies[level](salary)
+        }
+
+        console.log(calculateBonus('S', 20000))
+        console.log(calculateBonus('A', 10000))
+
+        // -----实现缓动动画-----
+
+        let tween = {
+            linear: function (t, b, c, d) {
+                return c * t / d + b
+            },
+            easeIn: function (t, b, c, d) {
+                return c * (t /= d) * t + b
+            },
+            strongEaseIn: function (t, b, c, d) {
+                return c * (t /= d) * t * t * t * t + b
+            },
+            strongEaseOut: function (t, b, c, d) {
+                return c * ((t = t / d - 1) * t * t * t * t + 1) + b
+            },
+            sineaseIn: function (t, b, c, d) {
+                return c * (t /= d) * t * t + b
+            },
+            sineaseOut: function (t, b, c, d) {
+                return c * ((t = t / d - 1) * t * t + 1) + b
+            }
+        }
+
+        let Animate = function (dom) {
+            this.dom = dom // 进行运动的 dom 节点
+            this.startTime = 0 // 动画开始时间
+            this.startPos = 0 // dom 的初始位置
+            this.endPos = 0 // dom 的目标位置
+            this.propertyName = null // dom 节点需要被改变的 css 属性名
+            this.easing = null // 缓动算法
+            this.duration = null // 动画持续时间
+        }
+
+        Animate.prototype.start = function (propertyName, endPos, duration, easing) {
+            this.startTime = Date.now()
+            this.startPos = this.dom.getBoundingClientRect()[propertyName]
+            this.propertyName = propertyName
+            this.endPos = endPos
+            this.duration = duration
+            this.easing = tween[easing]
+
+            let timeId = setInterval(() => {
+                if (this.step() === false) {
+                    clearInterval(timeId)
+                }
+            }, 19)
+        }
+
+        Animate.prototype.step = function () {
+            let t = Date.now()
+            if (t >= this.startTime + this.duration) {
+                this.update(this.endPos)
+                return false
+            }
+            let pos = this.easing(t - this.startTime, this.startPos, this.endPos - this.startPos, this.duration)
+            this.update(pos)
+        }
+
+        Animate.prototype.update = function (pos) {
+            this.dom.style[this.propertyName] = pos + 'px'
+        }
+
+        let div = document.getElementById('div')
+        let animate = new Animate(div)
+
+        animate.start('left', 500, 1000, 'strongEaseIn')
+
+        // -----表单校验-----
+        let formStrategies = {
+            isNonEmpty: function (value, errorMsg) {
+                if (value === '') {
+                    return errorMsg
+                }
+            },
+            minLength: function (value, length, errorMsg) {
+                if (value.length < length) {
+                    return errorMsg
+                }
+            },
+            isMobile: function (value, errorMsg) {
+                if (!/(^1[3|5|8][0-9]{9}$)/.test(value)) {
+                    return errorMsg
+                }
+            }
+        }
+
+        let registerForm = document.getElementById('registerForm')
+
+        let Validator = function () {
+            this.cache = []
+        }
+
+        Validator.prototype.add = function (dom, rules) {
+            for (let i = 0, rule; rule = rules[i++];) {
+                ((rule) => {
+                    let strategyAry = rule.strategy.split(':')
+                    let errorMsg = rule.errorMsg
+                    this.cache.push(() => {
+                        let strategy = strategyAry.shift()
+                        strategyAry.unshift(dom.value)
+                        strategyAry.push(errorMsg)
+                        return formStrategies[strategy].apply(dom, strategyAry)
+                    })
+                })(rule)
+            }
+        }
+
+        Validator.prototype.start = function () {
+            for (let i = 0, validatorFunc; validatorFunc = this.cache[i++];) {
+                let msg = validatorFunc()
+                if (msg) {
+                    return msg
+                }
+            }
+        }
+
+        let validataFunc = function () {
+            let validator = new Validator()
+
+            validator.add(registerForm.userName, [{
+                strategy: 'isNonEmpty',
+                errorMsg: '用户名不能为空'
+            }, {
+                strategy: 'minLength:10',
+                errorMsg: '用户名长度不能小于10位'
+            }])
+
+            validator.add(registerForm.password, [{
+                strategy: 'minLength:6',
+                errorMsg: '密码长度不能小于6位'
+            }])
+
+            validator.add(registerForm.phoneNumber, [{
+                strategy: 'isMobile',
+                errorMsg: '手机号码格式不正确'
+            }])
+
+            let errorMsg = validator.start()
+            return errorMsg
+        }
+
+        registerForm.onsubmit = function () {
+            let errorMsg = validataFunc()
+            if (errorMsg) {
+                alert(errorMsg)
+                return false
+            }
+        }
+    </script>
+</body>
+
+</html>

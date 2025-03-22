@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>仿京东移动端地址选择</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <script>
+        !function(b,a){var c=b.documentElement;a=function(){var a=c.clientWidth;a&&(c.style.fontSize=a/375*100+"px")};window.addEventListener("orientationchange"in window?"orientationchange":"resize",a,!1);a()}(document,window);
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="page start">
+        <div class="ipt ipt-unit">所在地区</div>
+    </div>
+    <div class="page page-select dis-none"></div>
+    <div class="selected">
+        <div class="slted slted-privince">请选择</div>
+        <div class="slted slted-city"></div>
+        <div class="slted slted-area"></div>
+        <div class="slted-cur"></div>
+    </div>
+    <div class="unit-select">
+        <ul class="unit-list list-privince"></ul>
+        <ul class="unit-list list-city"></ul>
+        <ul class="unit-list list-area"></ul>
+    </div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="scripts/main.js"></script>
+</body>
+</html>
