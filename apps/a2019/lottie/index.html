@@ -41,5 +41,14 @@
 <script src="js/jquery-3.1.0.js"></script>
 <script src="js/lottie.min.js"></script>
 <script src="js/index.js"></script>
+<script type="text/javascript">
+	console.log('a')
+	new Promise(()=>{
+		console.log('b')
+	}).then(()=>{
+		console.log('c')
+	})
+	console.log('d')
+</script>
 </body>
 </html>
